@@ -1,0 +1,610 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.containerTop {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* 顶部导航 */
+#top {
+    background-color: #232323;
+    height: 30px;
+    line-height: 30px;
+}
+
+#top ul {
+    float: right;
+    margin-right: 20px;
+}
+
+#top ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+#top ul li a {
+    color: #B2B2B2;
+    font-size: 14px;
+}
+
+/* 主导航 */
+#guide {
+    background-color: #232323;
+    height: 90px;
+    line-height: 90px;
+}
+
+#guide .logo a {
+    color: #F33F3F;
+    font-size: 50px;
+    text-decoration: none;
+}
+
+#guide .nav {
+    float: right;
+    margin-right: 20px;
+}
+
+#guide .nav li {
+    display: inline;
+    margin-left: 20px;
+}
+
+#guide .nav li a {
+    color: #B2B2B2;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+#guide .nav li a:hover {
+    color: #F33F3F;
+}
+
+/* 主体内容 */
+#content {
+    width: 1200px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    min-height: 500px;
+    display: flex;
+}
+
+/* .sidebar {
+    width: 250px;
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #F33F3F;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+    color: #F33F3F;
+} */
+
+.main {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.main h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.order-summary {
+    margin-top: 30px;
+}
+
+.order-summary h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #F33F3F;
+}
+
+.order-summary table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-summary table,
+.order-summary th,
+.order-summary td {
+    border: 1px solid #ddd;
+}
+
+.order-summary th,
+.order-summary td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* 页脚 */
+#footer {
+    text-align: center;
+    padding: 20px;
+    background: #232323;
+    color: #B2B2B2;
+    margin-top: 20px;
+}
+
+/* 这样就实现了一个简单的个人中心页面，包含顶部导航、侧边菜单（账户信息、订单、地址、收藏、设置）以及用户基本信息和最近订单展示。根据需求你还可以在此基础上增加更多功能模块。 */
+
+/* filepath: d:\前端\静态商城（全阶段实现）\CSS\personal.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.containerTop {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* 顶部导航 */
+#top {
+    background-color: #232323;
+    height: 30px;
+    line-height: 30px;
+}
+
+#top ul {
+    float: right;
+    margin-right: 20px;
+}
+
+#top ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+#top ul li a {
+    color: #B2B2B2;
+    font-size: 14px;
+}
+
+/* 主导航 */
+#guide {
+    background-color: #232323;
+    height: 90px;
+    line-height: 90px;
+}
+
+#guide .logo a {
+    color: #F33F3F;
+    font-size: 50px;
+    text-decoration: none;
+}
+
+#guide .nav {
+    float: right;
+    margin-right: 20px;
+}
+
+#guide .nav li {
+    display: inline;
+    margin-left: 20px;
+}
+
+#guide .nav li a {
+    color: #B2B2B2;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+#guide .nav li a:hover {
+    color: #F33F3F;
+}
+
+/* 主体内容 */
+#content {
+    width: 1200px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    min-height: 500px;
+    display: flex;
+}
+
+/* .sidebar {
+    width: 250px;
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #F33F3F;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+    color: #F33F3F;
+} */
+
+.main {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.main h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.order-summary {
+    margin-top: 30px;
+}
+
+.order-summary h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #F33F3F;
+}
+
+.order-summary table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-summary table,
+.order-summary th,
+.order-summary td {
+    border: 1px solid #ddd;
+}
+
+.order-summary th,
+.order-summary td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* 页脚 */
+#footer {
+    text-align: center;
+    padding: 20px;
+    background: #232323;
+    color: #B2B2B2;
+    margin-top: 20px;
+}
+
+/* 动态效果和美化增强 */
+.main .welcome-card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #fff7f0 60%, #ffe5e5 100%);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #f3eaea;
+    padding: 30px 30px 30px 20px;
+    margin-bottom: 30px;
+    animation: fadeInDown 1s;
+}
+
+.main .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #F33F3F;
+    margin-right: 30px;
+    background: #fff;
+    object-fit: cover;
+}
+
+.main .welcome-text {
+    flex: 1;
+}
+
+.main .edit-btn {
+    background: #F33F3F;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 22px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-left: 20px;
+}
+
+.main .edit-btn:hover {
+    background: #d12c2c;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sidebar ul li.active a {
+    color: #F33F3F;
+    font-weight: bold;
+    background: #ffeaea;
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+
+.order-summary table tbody tr:hover {
+    background: #fff5f5;
+    transition: background 0.2s;
+}
+
+.order-status {
+    padding: 4px 12px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.order-status.wait {
+    background: #F33F3F;
+}
+
+.order-status.done {
+    background: #4caf50;
+}
+
+/* 响应式优化 */
+@media (max-width: 900px) {
+
+    #content,
+    .containerTop {
+        width: 98%;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 0;
+    }
+}
+
+/* 优化侧边栏样式 */
+.sidebar {
+    width: 250px;
+    padding: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.sidebar-card {
+    background: linear-gradient(135deg, #fff7f0 70%, #ffe5e5 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #f3eaea;
+    padding: 32px 20px 24px 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.sidebar-card h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #F33F3F;
+    letter-spacing: 2px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.sidebar-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-card ul li {
+    margin-bottom: 18px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.2s;
+    font-size: 17px;
+    font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+}
+
+.sidebar-card ul li:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar-card ul li a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    letter-spacing: 1px;
+}
+
+.sidebar-card ul li a .icon {
+    margin-right: 10px;
+    font-size: 19px;
+    opacity: 0.8;
+}
+
+.sidebar-card ul li.active a,
+.sidebar-card ul li a:hover {
+    background: #ffeaea;
+    color: #F33F3F;
+    box-shadow: 0 2px 8px #f9e3e3;
+    font-weight: bold;
+}
+
+.sidebar-card ul li.active a .icon,
+.sidebar-card ul li a:hover .icon {
+    opacity: 1;
+    color: #F33F3F;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+/* 顶部导航样式 */
+#top {
+    background-color: #232323;
+    height: 30px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+#top .containerTop {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#top ul.right {
+    float: right;
+}
+
+#top ul.right li {
+    float: left;
+    line-height: 30px;
+}
+
+#top ul.right li a {
+    color: #B2B2B2;
+    border-right: 1px solid #B2B2B2;
+    padding: 0 15px;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+#top ul.right li a:hover {
+    color: #F33F3F;
+}
+
+#top .car a {
+    border: none;
+}
+
+/* 主导航栏样式 */
+#guide {
+    height: 90px;
+    background-color: #232323;
+    border-bottom: 2px solid #B2B2B2;
+}
+
+#guide .containerTop {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+#guide .logo.left a {
+    color: #F33F3F;
+    font-size: 38px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 90px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#guide .mid-info {
+    margin-left: 40px;
+    color: #B2B2B2;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 90px;
+    flex-shrink: 0;
+}
+
+#guide .nav.right {
+    margin-left: auto;
+    display: flex;
+}
+
+#guide .nav.right li {
+    margin: 0 18px;
+    line-height: 90px;
+    float: none;
+}
+
+#guide .nav.right li a {
+    color: #B2B2B2;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+#guide .nav.right li a:hover,
+#guide .nav.right li.active a {
+    color: #F33F3F;
+    background: #fff2f2;
+}

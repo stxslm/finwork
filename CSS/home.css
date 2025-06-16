@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ol,
+ul {
+	list-style-type: none;
+}
+
+a {
+	color: #666;
+
+}
+
+#logo,
+#lead,
+#banner,
+#content {
+
+	height: 100%px;
+	width: 100%;
+	border: 1px solid #666;
+	margin: 0px auto;
+}
+
+.container {
+	width: 100%;
+	border: 1px solid black;
+	margin: 0px auto;
+}
+
+#logo {
+	height: 90px;
+	background-color: #232323;
+}
+
+#logo a {
+	text-align: center;
+	color: #F33F3F;
+	font-size: 50px;
+	line-height: 90px;
+	text-decoration: none;
+}
+
+#logo p {
+	text-align: center;
+	color: #F33F3F;
+	font-size: 50px;
+	line-height: 90px;
+	text-decoration: none;
+}
+
+#lead {
+	height: 60px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#lead li {
+	float: left;
+	margin: 0px 15px;
+	line-height: 60px;
+	font-size: 20px;
+	padding: 0 5px;
+}
+
+/* #lead .shoes {} */
+
+
+#lead a {
+	color: #F33F3F;
+	font-size: 20px;
+	line-height: 60px;
+	font-weight: 600px;
+
+}
+
+#lead a:hover {
+	color: #F33F3F;
+}
+
+#d1 {
+	height: 600px;
+}
+
+#d1 a {
+	display: none;
+}
+
+/*content内容*/
+#content {
+	width: 900px;
+	height: 1200px;
+}
+
+#content .d1 {
+	width: 900px;
+	height: 300px;
+}
+
+#content .d1 img {
+	width: 900px;
+	height: 300px;
+}
+
+#content li {
+	float: left;
+}
+
+#content .d2 img {
+	width: 450px;
+	height: 300px;
+}
+
+
+/* 优化导航栏样式 */
+#lead {
+	background: #232323;
+	box-shadow: 0 2px 12px #eee;
+	border-bottom: 2px solid #F33F3F;
+}
+
+#lead .container {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#lead ul.u1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+}
+
+#lead ul.u1 li {
+	list-style: none;
+	margin: 0 36px;
+	position: relative;
+}
+
+#lead ul.u1 li a {
+	display: block;
+	color: #fff;
+	font-size: 18px;
+	/* 字体变小 */
+	font-weight: bold;
+	padding: 5px 18px;
+	/* 按钮高度和宽度变小 */
+	border-radius: 18px;
+	/* 圆角适当缩小 */
+	transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+	letter-spacing: 1px;
+	text-decoration: none;
+	position: relative;
+	top: -4px;
+	/* 文字整体上移 */
+}
+
+#lead ul.u1 li a:hover,
+#lead ul.u1 li.active a {
+	background: #F33F3F;
+	color: #fff;
+	box-shadow: 0 4px 16px #f9e3e3;
+}

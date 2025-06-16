@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<title>评论</title>
+	<link rel="stylesheet" href="css/conment.css">
+	<link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+	<style>
+		body {
+			background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+			font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+			margin: 0;
+			min-height: 100vh;
+		}
+
+		#lead {
+			background: #232323;
+			box-shadow: 0 2px 12px #eee;
+			border-bottom: 2px solid #F33F3F;
+			margin-bottom: 40px;
+			height: 68px;
+			width: 110%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+		}
+
+		#lead table {
+			margin: 0 auto;
+			background: none;
+		}
+
+		#lead td a,
+		#lead #logo a {
+			display: inline-block;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 12px 18px;
+			border-radius: 20px;
+			text-decoration: none;
+			transition: background 0.2s, color 0.2s;
+			margin: 0 4px;
+		}
+
+		#lead td a:hover,
+		#lead #logo a:hover {
+			background: #F33F3F;
+			color: #fff;
+		}
+
+		#lead #logo a,
+		#lead td#logo a {
+			color: #F33F3F;
+			font-size: 28px;
+			padding: 0 18px;
+			background: none;
+			letter-spacing: 2px;
+		}
+
+		#big {
+			max-width: 1200px;
+			margin: 40px auto;
+			background: #fff;
+			border-radius: 18px;
+			box-shadow: 0 4px 24px #f3eaea;
+			padding: 36px 36px 28px 36px;
+			display: flex;
+			gap: 36px;
+			animation: fadeInDown 0.8s;
+		}
+
+		#top {
+			width: 100%;
+			text-align: center;
+			margin-bottom: 24px;
+		}
+
+		.p1 {
+			font-size: 26px;
+			color: #F33F3F;
+			font-weight: bold;
+			letter-spacing: 2px;
+			margin-bottom: 10px;
+		}
+
+		#top hr {
+			border: none;
+			border-top: 2px solid #CFCFCF;
+			width: 90%;
+			margin: 18px auto;
+		}
+
+		#top img {
+			margin: 10px 0;
+			max-width: 100%;
+			border-radius: 10px;
+			box-shadow: 0 2px 8px #f3eaea;
+		}
+
+		#lone {
+			margin: 18px 0 24px 0;
+			text-align: center;
+		}
+
+		#lone form {
+			display: inline-flex;
+			gap: 18px;
+			font-size: 16px;
+			color: #F33F3F;
+			background: #fff7f0;
+			padding: 8px 24px;
+			border-radius: 16px;
+			box-shadow: 0 2px 8px #f3eaea;
+		}
+
+		#all {
+			width: 70%;
+		}
+
+		#conments {
+			display: flex;
+			flex-direction: column;
+			gap: 28px;
+		}
+
+		#conments #pic {
+			background: #fff3f3;
+			border-radius: 14px;
+			box-shadow: 0 2px 12px #f9e3e3;
+			padding: 18px 24px 14px 24px;
+			position: relative;
+			transition: box-shadow 0.2s, transform 0.2s;
+		}
+
+		#conments #pic:hover {
+			box-shadow: 0 8px 32px #f9e3e3;
+			transform: translateY(-4px) scale(1.01);
+		}
+
+		#conments #pic>img:first-child {
+			width: 38px;
+			height: 38px;
+			border-radius: 50%;
+			vertical-align: middle;
+			margin-right: 8px;
+			box-shadow: 0 1px 4px #f3eaea;
+		}
+
+		#conments #pic span {
+			font-weight: bold;
+			color: #F33F3F;
+			font-size: 16px;
+			vertical-align: middle;
+		}
+
+		#conments #pic>img:nth-child(4) {
+			width: 120px;
+			height: 120px;
+			border-radius: 10px;
+			margin: 10px 0;
+			object-fit: cover;
+			box-shadow: 0 2px 8px #f3eaea;
+		}
+
+		.detail {
+			color: #888;
+			font-size: 14px;
+			margin: 8px 0 0 0;
+			letter-spacing: 1px;
+		}
+
+		.p2 {
+			color: #232323;
+			font-size: 16px;
+			margin: 8px 0 0 0;
+			letter-spacing: 1px;
+		}
+
+		#small {
+			width: 28%;
+			min-width: 200px;
+			background: #fff7f0;
+			border-radius: 14px;
+			box-shadow: 0 2px 12px #f3eaea;
+			padding: 18px 12px;
+			margin-left: 18px;
+			height: fit-content;
+		}
+
+		#small ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		#small .goods {
+			text-align: center;
+			color: #F33F3F;
+			font-weight: bold;
+			margin-bottom: 12px;
+			font-size: 16px;
+			letter-spacing: 1px;
+		}
+
+		#tb2 {
+			width: 100%;
+			margin-bottom: 18px;
+			background: #fff;
+			border-radius: 10px;
+			box-shadow: 0 1px 6px #f3eaea;
+			overflow: hidden;
+		}
+
+		#tb2 img {
+			width: 100%;
+			max-width: 120px;
+			height: 120px;
+			object-fit: cover;
+			border-radius: 10px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		#tb2 td {
+			text-align: center;
+			color: #F33F3F;
+			font-size: 16px;
+			padding: 6px 0;
+		}
+
+		@media (max-width: 1100px) {
+			#big {
+				flex-direction: column;
+				padding: 18px 2vw;
+				gap: 18px;
+			}
+
+			#all,
+			#small {
+				width: 100%;
+				margin-left: 0;
+			}
+
+			#small {
+				margin-top: 24px;
+			}
+		}
+
+		@media (max-width: 700px) {
+			#big {
+				padding: 8px 0;
+			}
+
+			#top hr {
+				width: 98vw;
+			}
+
+			#conments #pic {
+				padding: 10px 6px 8px 6px;
+			}
+
+			#tb2 img {
+				max-width: 80px;
+				height: 80px;
+			}
+		}
+
+		@keyframes fadeInDown {
+			0% {
+				opacity: 0;
+				transform: translateY(-30px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<a href="shopping detail.html" style="
+	        position: fixed;
+	        top: 24px;
+	        left: 28px;
+	        z-index: 999;
+	        background: #fff;
+	        color: #f33f3f;
+	        font-weight: bold;
+	        font-size: 1.08em;
+	        border-radius: 22px;
+	        padding: 8px 22px;
+	        box-shadow: 0 2px 12px #ffb19944;
+	        text-decoration: none;
+	        border: 2px solid #f33f3f;
+	        transition: background 0.2s, color 0.2s;
+	    " onmouseover="this.style.background='#f33f3f';this.style.color='#fff';"
+		onmouseout="this.style.background='#fff';this.style.color='#f33f3f';">
+		← 返回商品详情
+	</a>
+
+
+	<!-- lead -->
+	<div id="lead">
+		<table>
+			<tr>
+				<td id="logo"><a href="index.html">SEVENTEEN</a></td>
+				<td><a href="index.html">主页</a></td>
+				<td><a href="product.html">新品|女士</a></td>
+				<td><a href="#">新品|男士</a></td>
+				<td><a href="#">新品|儿童</a></td>
+				<td><a href="#">新品|鞋包</a></td>
+				<td><a href="about us.html">品牌形象</a></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<div id="big">
+			<div style="width: 100%;">
+				<div id="top">
+					<p class="p1">买家评论</p>
+					<hr>
+					<img src="img/2020-06-09_184131.png" alt="">
+					<br>
+					<img src="img/5.png" alt="">
+					<hr>
+				</div>
+				<div id="lone">
+					<form>
+						<input type="radio" name="filter">全部
+						<input type="radio" name="filter">追评(1)
+						<input type="radio" name="filter">图片(0)
+					</form>
+				</div>
+				<div id="all">
+					<div id="conments">
+						<div id="pic">
+							<img src="img/2020-06-09_184131.png" alt=""><span>集美</span>
+							<br>
+							<img src="img/O1CN01oWSqtS1IOSKEJgsVW_!!0-rate.jpg_400x400.jpg" alt=""><br>
+							2020.5.13<br>
+							<p class="detail">尺寸：S(165/80A)&nbsp;|&nbsp;颜色分类：驼色&nbsp;|&nbsp;<span
+									style="color:#C45500 ;">已确认购买</span></p>
+							<p class="p2">这件太美了，一直在寻找这种颜色的西装外套，这件都满足了，集美们买吧！</p>
+						</div>
+						<div id="pic">
+							<img src="img/2020-06-09_184131.png" alt=""><span>集美</span>
+							<br>
+							<img src="img/O1CN01qrH15R1IOSKIm7WKo_!!0-rate.jpg_400x400.jpg" alt=""><br>
+							2020.5.13<br>
+							<p class="detail">尺寸：S(165/80A)&nbsp;|&nbsp;颜色分类：驼色&nbsp;|&nbsp;<span
+									style="color:#C45500 ;">已确认购买</span></p>
+							<p class="p2">这件太美了，一直在寻找这种颜色的西装外套，这件都满足了，集美们买吧！</p>
+						</div>
+						<div id="pic">
+							<img src="img/2020-06-09_184131.png" alt=""><span>集美</span>
+							<br>
+							<img src="img/O1CN01vyrqBM1Tj1sx7VUZy_!!0-rate.jpg_400x400.jpg" alt=""><br>
+							2020.5.13<br>
+							<p class="detail">尺寸：S(165/80A)&nbsp;|&nbsp;颜色分类：驼色&nbsp;|&nbsp;<span
+									style="color:#C45500 ;">已确认购买</span></p>
+							<p class="p2">这件太美了，一直在寻找这种颜色的西装外套，这件都满足了，集美们买吧！</p>
+						</div>
+						<div id="pic">
+							<img src="img/2020-06-09_184131.png" alt=""><span>集美</span>
+							<br>
+							<img src="img/v4.jpg" alt=""><br>
+							2020.5.13<br>
+							<p class="detail">尺寸：S(165/80A)&nbsp;|&nbsp;颜色分类：驼色&nbsp;|&nbsp;<span
+									style="color:#C45500 ;">已确认购买</span></p>
+							<p class="p2">这件太美了，一直在寻找这种颜色的西装外套，这件都满足了，集美们买吧！</p>
+						</div>
+						<div id="pic">
+							<img src="img/2020-06-09_184131.png" alt=""><span>集美</span>
+							<br>
+							<img src="img/v4.jpg" alt=""><br>
+							2020.5.13<br>
+							<p class="detail">尺寸：S(165/80A)&nbsp;|&nbsp;颜色分类：驼色&nbsp;|&nbsp;<span
+									style="color:#C45500 ;">已确认购买</span></p>
+							<p class="p2">这件太美了，一直在寻找这种颜色的西装外套，这件都满足了，集美们买吧！</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="small">
+				<ul>
+					<li class="goods">-------本店同类好商品--------</li>
+					<li>
+						<table id="tb2">
+							<tr>
+								<td class="td5">
+									<img src="img/1591411318850..jpg" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td>&yen;399</td>
+							</tr>
+						</table>
+					</li>
+					<li>
+						<table id="tb2">
+							<tr>
+								<td class="td5">
+									<img src="img/1591413211373..jpg" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td>&yen;399</td>
+							</tr>
+						</table>
+					</li>
+					<li>
+						<table id="tb2">
+							<tr>
+								<td class="td5">
+									<img src="img/1591413568178..jpg" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td>&yen;399</td>
+							</tr>
+						</table>
+					</li>
+					<li>
+						<table id="tb2">
+							<tr>
+								<td class="td5">
+									<img src="img/1591411410070..jpg" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td>&yen;399</td>
+							</tr>
+						</table>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 页脚 -->
+	<footer
+		style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+		<div style="max-width:1200px; margin:0 auto;">
+			<div style="margin-bottom:12px;">
+				<a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+				<a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+				<a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+				<a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+			</div>
+			<div style="margin-bottom:8px;">
+				© 2025 SEVENTEEN CLOTHING. 保留所有权利.
+			</div>
+			<div style="font-size:14px; color:#bbb;">
+				联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+			</div>
+		</div>
+	</footer>
+
+
+</body>
+
+</html>

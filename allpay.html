@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>群体付款</title>
+    <link rel="stylesheet" href="css/pay.css">
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+    <style>
+        body {
+            background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+            font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        #logo {
+            height: 100px;
+            width: 100%;
+            background: #232323;
+            font-size: 44px;
+            line-height: 100px;
+            text-align: center;
+            letter-spacing: 4px;
+        }
+
+        #logo a {
+            color: #F33F3F;
+            font-size: 44px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #lead {
+            margin-bottom: 24px;
+            height: 60px;
+            text-align: center;
+            font-size: 20px;
+            background: #232323;
+            box-shadow: 0 2px 12px #eee;
+            border-bottom: 2px solid #F33F3F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        #lead table {
+            margin: 0 auto;
+            background: none;
+        }
+
+        #lead td a {
+            display: inline-block;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            margin: 0 4px;
+        }
+
+        #lead td a:hover {
+            background: #F33F3F;
+            color: #fff;
+        }
+
+        .allpay-container {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #f3eaea;
+            padding: 36px 36px 28px 36px;
+            animation: fadeInDown 0.8s;
+        }
+
+        .cart-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 28px;
+        }
+
+        .cart-list th,
+        .cart-list td {
+            border-bottom: 1px solid #f3eaea;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .cart-list th {
+            background: #fff3f3;
+            color: #F33F3F;
+            font-weight: bold;
+        }
+
+        .cart-list img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px #f3eaea;
+        }
+
+        .pay-amount {
+            font-size: 22px;
+            color: #F33F3F;
+            font-weight: bold;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            text-align: right;
+        }
+
+        .pay-methods {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 24px;
+            justify-content: center;
+        }
+
+        .pay-method {
+            flex: 1;
+            background: #fff3f3;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f9e3e3;
+            padding: 18px 0 12px 0;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            max-width: 180px;
+        }
+
+        .pay-method.selected,
+        .pay-method:hover {
+            box-shadow: 0 8px 32px #f9e3e3;
+            border: 2px solid #F33F3F;
+            transform: scale(1.03);
+        }
+
+        .pay-method img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 8px;
+        }
+
+        .pay-method-name {
+            font-size: 17px;
+            color: #232323;
+            font-weight: bold;
+        }
+
+        .qr-title {
+            text-align: center;
+            color: #888;
+            font-size: 15px;
+            margin: 18px 0 8px 0;
+        }
+
+        .qr-img {
+            display: block;
+            margin: 0 auto 12px auto;
+            width: 180px;
+            height: 180px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f3eaea;
+            background: #fff;
+        }
+
+        .pay-tips {
+            margin-top: 24px;
+            color: #666;
+            font-size: 15px;
+            background: #fff7f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+        }
+
+        @media (max-width: 900px) {
+            .allpay-container {
+                padding: 18px 2vw;
+            }
+
+            .cart-list th,
+            .cart-list td {
+                font-size: 14px;
+                padding: 8px 2px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #logo {
+                font-size: 22px;
+                line-height: 60px;
+                height: 60px;
+            }
+
+            #logo a {
+                font-size: 22px;
+            }
+
+            #lead {
+                height: 44px;
+                font-size: 14px;
+            }
+
+            #lead td a {
+                font-size: 14px;
+                padding: 6px 8px;
+            }
+
+            .allpay-container {
+                padding: 8px 0;
+            }
+
+            .cart-list img,
+            .qr-img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+        /* 建议添加到 css/allpay.css */
+        .allpay-btn-wrap {
+            text-align: right;
+            margin-top: 18px;
+            margin-right: 60px;
+        }
+
+        .cancel-btn {
+            background: #fff;
+            color: #f33f3f;
+            border: 2px solid #f33f3f;
+            border-radius: 22px;
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 10px 38px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .cancel-btn:hover {
+            background: #f33f3f;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部logo -->
+    <div id="logo">
+        <a href="index.html">SEVENTEEN</a>
+    </div>
+    <!-- 导航栏 -->
+    <div id="lead">
+        <table>
+            <tr>
+                <td><a href="index.html">主页</a></td>
+                <td><a href="product.html">新品|女士</a></td>
+                <td><a href="#">新品|男士</a></td>
+                <td><a href="#">新品|儿童</a></td>
+                <td><a href="#">新品|鞋包</a></td>
+                <td><a href="about us.html">品牌形象</a></td>
+            </tr>
+        </table>
+    </div>
+    <!-- 群体付款内容 -->
+    <div class="allpay-container">
+        <h2 style="color:#F33F3F;text-align:center;margin-bottom:24px;">购物车结算</h2>
+        <table class="cart-list" id="cart-list">
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>名称</th>
+                    <th>规格</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>小计</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- JS渲染购物车商品 -->
+            </tbody>
+        </table>
+        <div class="pay-amount" id="pay-amount">合计：￥0.00 (0件商品)</div>
+        <div class="pay-methods">
+            <div class="pay-method selected" id="wechat-method">
+                <img src="img/t4.jpg" alt="微信支付">
+                <div class="pay-method-name">微信支付</div>
+            </div>
+            <div class="pay-method" id="alipay-method">
+                <img src="img/微信图片_20250516174509.jpg" alt="支付宝">
+                <div class="pay-method-name">支付宝</div>
+            </div>
+        </div>
+        <div class="qr-title" id="qr-title">请使用微信扫码付款</div>
+        <img class="qr-img" id="qr-img" src="img/微信图片_20250516174506.jpg" alt="支付二维码">
+
+
+
+        <div class="allpay-btn-wrap">
+            <button onclick="window.location.href='shopping car.html'" class="cancel-btn">
+                取消支付
+            </button>
+        </div>
+
+        <div class="pay-tips">
+            支付完成后，系统会自动为您确认订单。<br>
+            如遇支付问题，请联系客服。
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <footer
+        style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+                <a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+                <a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+                <a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+            </div>
+            <div style="margin-bottom:8px;">
+                © 2025 SEVENTEEN CLOTHING. 保留所有权利.
+            </div>
+            <div style="font-size:14px; color:#bbb;">
+                联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+            </div>
+        </div>
+    </footer>
+    <script>
+
+        // 支付方式切换
+        const wechat = document.getElementById('wechat-method');
+        const alipay = document.getElementById('alipay-method');
+        const qrImg = document.getElementById('qr-img');
+        const qrTitle = document.getElementById('qr-title');
+        wechat.onclick = function () {
+            wechat.classList.add('selected');
+            alipay.classList.remove('selected');
+            qrImg.src = 'img/微信图片_20250516174506.jpg';
+            qrTitle.innerText = '请使用微信扫码付款';
+        }
+        alipay.onclick = function () {
+            alipay.classList.add('selected');
+            wechat.classList.remove('selected');
+            qrImg.src = 'img/微信图片_20250516174509.jpg';
+            qrTitle.innerText = '请使用支付宝扫码付款';
+        }
+
+
+        // 在allpay页面的<script>标签内添加如下代码（替换原renderCart函数）
+        function renderCartSummary() {
+            var summary = JSON.parse(localStorage.getItem('cart_summary') || '{"total":0,"num":0}');
+            document.getElementById('pay-amount').innerText = `合计：￥${Number(summary.total).toFixed(2)} (${summary.num}件商品)`;
+        }
+        renderCartSummary();
+
+
+
+
+
+    </script>
+</body>
+
+</html>

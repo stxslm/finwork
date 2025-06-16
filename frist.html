@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover</title>
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+    <style>
+        body {
+            /* background-image: url("background_first_Tab.png");
+    background-image: url("main.png");
+    background-image: url("grass.png"); */
+
+            text-align: center;
+            font-size: 100px;
+            padding-top: 20%;
+
+            background-repeat: repeat;
+            background-position: center;
+            background-attachment: fixed;
+            /* 可根据页面需求调整 */
+        }
+
+        /* 新增：打字效果文本块 */
+        /* 修改：打字效果块位置，确保文字打字完成后停止在页面中部（水平方向居中，垂直方向40%处） */
+        .typing-box {
+            position: fixed;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* 调整与下方 STXSLM 块的间距 */
+
+
+        /* 原有打字效果（初始文本） */
+        .typing-text {
+            display: inline-block;
+            font-size: 36px;
+            /* 可根据需要调整文字大小 */
+            color: #ffffff;
+            /* 文字颜色 */
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff;
+            /* 模拟光标 */
+            text-align: right;
+            /* 初始状态下不直接定义 animation，下面通过类来控制 */
+        }
+
+        /* 初始文本打字动画，字符数为27（请根据实际文字字符数调整 steps 数值） */
+        .typing-animation {
+            animation: typing 4s steps(27) forwards, blink 0.75s step-end infinite;
+        }
+
+        /* 删除动画（将文本从宽度100%收回到0），同样使用 steps(27) */
+        .deleting {
+            animation: deleting 4s steps(27) forwards, blink 0.75s step-end infinite;
+        }
+
+        /* 新文本打字动画，字符数为13（请根据实际新文字字符数调整 steps 数值） */
+        .newtyping {
+            animation: typing 4s steps(13) forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes deleting {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0;
+            }
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #fff;
+            }
+        }
+
+        /* 背景切换容器 */
+        .bg-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* 保证背景在所有内容后面 */
+            overflow: hidden;
+        }
+
+        /* 每个背景图层 */
+        .bg-slider div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: bgCycle 30s infinite;
+        }
+
+        /* 第一张背景图：延迟 0 秒 */
+        .bg-slider div:nth-child(1) {
+            background-image: url("img/t6.png");
+            animation-delay: 0s;
+        }
+
+        /* 第二张背景图：延迟 10 秒 */
+        .bg-slider div:nth-child(2) {
+            background-image: url("img/t7.png");
+            animation-delay: 10s;
+        }
+
+        /* 第三张背景图：延迟 20 秒 */
+        .bg-slider div:nth-child(3) {
+            background-image: url("img/t8.png");
+            animation-delay: 20s;
+        }
+
+        /* 背景动画：整个周期 30 秒，每 10 秒一张图，淡入淡出效果 */
+        @keyframes bgCycle {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            33% {
+                opacity: 1;
+            }
+
+            43% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* 为字母添加自由落体及反弹动效 */
+        .letter {
+            display: inline-block;
+            /* 动画 3s 完成并保持最终状态 */
+            animation: dropBounce 3s ease-out forwards;
+        }
+
+        @keyframes dropBounce {
+            0% {
+                transform: translateY(-150vh);
+            }
+
+            60% {
+                transform: translateY(0);
+            }
+
+            70% {
+                transform: translateY(-20px);
+            }
+
+            80% {
+                transform: translateY(0);
+            }
+
+            90% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* 确保外层容器为相对定位 */
+        .stxslm-wrapper {
+            position: relative;
+            display: inline-block;
+
+            /*  */
+        }
+
+
+        /* 为两个 span 块设置透明背景和透明边框 */
+        .group {
+            background-color: transparent;
+            border: 1px solid transparent;
+            display: inline-block;
+            transition: transform 0.3s ease 0.3s;
+        }
+
+        /* 为 group-left 内的字母设置颜色（保持原顺序：S 红、T 橙、X 黄） */
+        .group-left .letter:nth-child(1) {
+            color: red;
+        }
+
+        .group-left .letter:nth-child(2) {
+            color: orange;
+        }
+
+        .group-left .letter:nth-child(3) {
+            color: yellow;
+        }
+
+        /* 为 group-right 内的字母设置颜色（保持原顺序：S 绿、L 蓝、M 紫） */
+        .group-right .letter:nth-child(1) {
+            color: green;
+        }
+
+        .group-right .letter:nth-child(2) {
+            color: blue;
+        }
+
+        .group-right .letter:nth-child(3) {
+            color: purple;
+        }
+
+        /* 当鼠标悬停在容器上时，同时使左右两个组别向两侧移动 */
+        .stxslm-wrapper:hover .group-left {
+            transform: translateX(-100px);
+        }
+
+        .stxslm-wrapper:hover .group-right {
+            transform: translateX(100px);
+        }
+
+
+        /* 按钮样式 */
+        .secret-btn {
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            /* 初始隐藏 */
+            transition: opacity 0.3s ease 0.3s;
+            /* 延迟0.5秒后（盒子移动完毕）逐渐显现 */
+            padding: 15px 25px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+
+        /* 悬停整个区域时显示按钮 */
+        .stxslm-wrapper:hover .secret-btn {
+            opacity: 1;
+        }
+
+        /* 鼠标悬停按钮时背景由白色变为浅紫色 */
+        .secret-btn:hover {
+            background-color: #dda0dd;
+        }
+
+
+        /* 鼠标悬停时取消盒子还原的延迟，让它们立即移动 */
+        .stxslm-wrapper:hover .group {
+            transition-delay: 0s;
+        }
+
+        /* 当鼠标离开时，让按钮无延迟消失 */
+        .stxslm-wrapper:not(:hover) .secret-btn {
+            transition-delay: 0s;
+        }
+
+
+
+
+
+
+
+        .fall-bounce {
+            animation: fallBounce 1.6s cubic-bezier(.23, 1.13, .32, 1.01);
+        }
+
+        @keyframes fallBounce {
+            0% {
+                transform: translateY(-300px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            75% {
+                transform: translateY(-30px);
+            }
+
+            85% {
+                transform: translateY(0);
+            }
+
+            92% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<!-- 引入 JavaScript 文件 -->
+<script src="js/STXSLM.js"></script>
+
+
+<body>
+
+
+
+    <audio id="bgMusic" src="media/Jusqu'à Grand-Père - Auspicious sign.ogg" preload="auto"></audio>
+    <script>
+        // 用户首次点击页面任意处时播放音乐
+        document.addEventListener('click', function playMusicOnce() {
+            var audio = document.getElementById('bgMusic');
+            if (audio.paused) {
+                audio.play();
+            }
+            // 只绑定一次
+            document.removeEventListener('click', playMusicOnce);
+        });
+
+        // 播放结束后自动循环播放
+        document.getElementById('bgMusic').addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        });
+    </script>
+
+
+
+    <div class="bg-slider">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div style="margin-top: -250px;">
+        <div class="fall-bounce"
+            style="font-size: 70px; color: #F33F3F; font-weight: bold; letter-spacing: 2px; margin-bottom: 18px; display: inline-block; text-shadow: 0 0 16px #fff, 0 0 8px #F33F3F;">
+            SEVENTEEN CLOTHING
+        </div>
+    </div>
+
+
+
+    <!-- 新增：打字效果文本块 -->
+    <div class="typing-box">
+        <!-- 开发者可在此处修改文字内容 -->
+        <span class="typing-text typing-animation">人类的幸福和欢乐在于奋斗，而最有价值的是为理想而奋斗！</span>
+    </div>
+
+
+    <div style="margin: 270px 0 40px 0;">
+        <button onclick="location.href='index.html'" style="
+                    padding: 18px 48px;
+                    font-size: 28px;
+                    color: #fff;
+                    background: linear-gradient(90deg, #F33F3F 60%, #f56600 100%);
+                    border: none;
+                    border-radius: 32px;
+                    box-shadow: 0 4px 24px #f3eaea;
+                    cursor: pointer;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                    transition: background 0.2s, transform 0.2s;
+                "
+            onmouseover="this.style.background='linear-gradient(90deg,#f56600 0%,#F33F3F 100%)';this.style.transform='scale(1.06)'"
+            onmouseout="this.style.background='linear-gradient(90deg,#F33F3F 60%,#f56600 100%)';this.style.transform='scale(1)'">
+            Welcome
+        </button>
+    </div>
+
+
+    <div>
+
+    </div>
+
+
+
+    <script>
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 定义包含10组文字的数组（可自行修改）
+            const texts = [
+                "人类的幸福和欢乐在于奋斗，而最有价值的是为理想而奋斗！",
+                "暗恋是世界上最美丽的爱情。",
+                "一个人能否有成就，只看他是否具备自尊心与自信心两个条件。",
+                "骄傲是无知的产物。",
+                "世上只有一种善，那就是知识，也只有一种恶，那就是无知。",
+                "逆境是人类获得知识的最高学府，难题是人们取得智慧之门。",
+                "认识自己，方能认识人生。",
+                "唯有孤独的人才强大。",
+                "知足是天赋的财富，奢侈是人为的贫穷。",
+                "如果你能抓住死去的我，想怎么埋葬就怎么埋葬。"
+
+            ];
+
+            let index = 0;
+            const typingEl = document.querySelector('.typing-text');
+
+            function runCycle() {
+                // 先清除任何内联动画，重置宽度
+                typingEl.style.animation = "none";
+                typingEl.style.width = '0';
+                // 设置当前组文字
+                const currentText = texts[index];
+                typingEl.textContent = currentText;
+
+                // 计算当前文字的字符数，作为 steps 参数
+                const stepsCount = currentText.length;
+
+                // 强制触发 reflow，确保动画重置生效
+                void typingEl.offsetWidth;
+
+                // 启动打字动画：根据当前字符数动态设置 steps 参数
+                typingEl.style.animation = `typing 4s steps(${stepsCount}) forwards, blink 0.75s step-end infinite`;
+
+                // 4秒打字动画后，再等待3秒（即7秒后）开始删除动画
+                setTimeout(() => {
+                    // 设置删除动画，同样动态设置 steps 参数
+                    typingEl.style.animation = `deleting 4s steps(${stepsCount}) forwards, blink 0.75s step-end infinite`;
+                }, 7000); // 7秒后触发删除动画
+
+                // 删除动画持续4秒，总时间11秒后切换下一组文字
+                setTimeout(() => {
+                    index = (index + 1) % texts.length; // 循环显示文本，如需播放一轮后停止，请自行修改逻辑
+                    runCycle();
+                }, 11000);
+            }
+
+            runCycle();
+        });
+
+    </script>
+
+</body>
+
+</html>

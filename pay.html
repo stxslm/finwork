@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>付款</title>
+    <link rel="stylesheet" href="css/pay.css">
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+            font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        #logo {
+            height: 100px;
+            width: 100%;
+            background: #232323;
+            font-size: 44px;
+            line-height: 100px;
+            text-align: center;
+            letter-spacing: 4px;
+        }
+
+        #logo a {
+            color: #F33F3F;
+            font-size: 44px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #lead {
+            margin-bottom: 24px;
+            height: 60px;
+            text-align: center;
+            font-size: 20px;
+            background: #232323;
+            box-shadow: 0 2px 12px #eee;
+            border-bottom: 2px solid #F33F3F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        #lead table {
+            margin: 0 auto;
+            background: none;
+        }
+
+        #lead td a {
+            display: inline-block;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            margin: 0 4px;
+        }
+
+        #lead td a:hover {
+            background: #F33F3F;
+            color: #fff;
+        }
+
+        /* 支付内容卡片 */
+        .pay-container {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #f3eaea;
+            padding: 36px 36px 28px 36px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            animation: fadeInDown 0.8s;
+        }
+
+        .pay-left {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .pay-left img {
+            width: 320px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f3eaea;
+            background: #fff7f0;
+        }
+
+        .pay-title {
+            font-size: 24px;
+            color: #232323;
+            font-weight: bold;
+            margin: 18px 0 8px 0;
+            letter-spacing: 2px;
+        }
+
+        .pay-desc {
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .pay-right {
+            flex: 2;
+            min-width: 320px;
+        }
+
+        .pay-amount {
+            font-size: 28px;
+            color: #F33F3F;
+            font-weight: bold;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+
+        .pay-methods {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .pay-method {
+            flex: 1;
+            background: #fff3f3;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f9e3e3;
+            padding: 18px 0 12px 0;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .pay-method.selected,
+        .pay-method:hover {
+            box-shadow: 0 8px 32px #f9e3e3;
+            border: 2px solid #F33F3F;
+            transform: scale(1.03);
+        }
+
+        .pay-method img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 8px;
+        }
+
+        .pay-method-name {
+            font-size: 17px;
+            color: #232323;
+            font-weight: bold;
+        }
+
+        .qr-title {
+            text-align: center;
+            color: #888;
+            font-size: 15px;
+            margin: 18px 0 8px 0;
+        }
+
+        .qr-img {
+            display: block;
+            margin: 0 auto 12px auto;
+            width: 180px;
+            height: 180px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f3eaea;
+            background: #fff;
+        }
+
+        .pay-tips {
+            margin-top: 24px;
+            color: #666;
+            font-size: 15px;
+            background: #fff7f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+        }
+
+        .pay-promises {
+            display: flex;
+            gap: 18px;
+            margin-top: 18px;
+            font-size: 15px;
+            color: #666;
+            justify-content: flex-start;
+        }
+
+        .pay-promises span {
+            background: #fff3f3;
+            border-radius: 12px;
+            padding: 6px 18px;
+            color: #F33F3F;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1000px) {
+            .pay-container {
+                flex-direction: column;
+                padding: 18px 2vw;
+                gap: 18px;
+            }
+
+            .pay-left img {
+                width: 90vw;
+                max-width: 340px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #logo {
+                font-size: 22px;
+                line-height: 60px;
+                height: 60px;
+            }
+
+            #logo a {
+                font-size: 22px;
+            }
+
+            #lead {
+                height: 44px;
+                font-size: 14px;
+            }
+
+            #lead td a {
+                font-size: 14px;
+                padding: 6px 8px;
+            }
+
+            .pay-container {
+                padding: 8px 0;
+            }
+
+            .pay-left img,
+            .qr-img {
+                width: 90vw;
+                max-width: 220px;
+                height: auto;
+            }
+
+            .pay-methods {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部logo -->
+    <div id="logo">
+        <a href="index.html">SEVENTEEN</a>
+    </div>
+    <!-- 服饰分类导航lead -->
+    <div id="lead">
+        <table id="t0">
+            <tr>
+                <td><a href="index.html">主页</a></td>
+                <td><a href="product.html">新品|女士</a></td>
+                <td><a href="#">新品|男士</a></td>
+                <td><a href="#">新品|儿童</a></td>
+                <td><a href="#">新品|鞋包</a></td>
+                <td><a href="about us.html">品牌形象</a></td>
+            </tr>
+        </table>
+    </div>
+    <!-- 内容 -->
+    <div class="pay-container">
+        <div class="pay-left">
+            <img src="img/v1.jpg" alt="商品图片">
+            <div class="pay-title">SEVENTEEN新款 女装 款冬休闲西装外套</div>
+            <div class="pay-desc">舒适面料 | 时尚百搭 | 经典设计</div>
+        </div>
+        <div class="pay-right">
+            <div class="pay-amount">请付款：<span style="font-size:32px;color:#B12704;">&yen;899.00</span></div>
+            <div class="pay-methods">
+                <div class="pay-method selected" id="wechat-method">
+                    <img src="img/t4.jpg" alt="微信支付">
+                    <div class="pay-method-name">微信支付</div>
+                </div>
+                <div class="pay-method" id="alipay-method">
+                    <img src="img/微信图片_20250516174509.jpg" alt="支付宝">
+                    <div class="pay-method-name">支付宝</div>
+                </div>
+            </div>
+            <div class="qr-title" id="qr-title">请使用微信扫码付款</div>
+            <img class="qr-img" id="qr-img" src="img/微信图片_20250516174506.jpg" alt="支付二维码">
+            <div class="pay-tips">
+                支付完成后，系统会自动为您确认订单。<br>
+                如遇支付问题，请联系客服。
+            </div>
+            <div class="pay-promises">
+                <span>正品保证</span>
+                <span>极速退款</span>
+                <span>赠送运费险</span>
+                <span>七天无理由退款</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 支付方式切换
+        const wechat = document.getElementById('wechat-method');
+        const alipay = document.getElementById('alipay-method');
+        const qrImg = document.getElementById('qr-img');
+        const qrTitle = document.getElementById('qr-title');
+        wechat.onclick = function () {
+            wechat.classList.add('selected');
+            alipay.classList.remove('selected');
+            qrImg.src = 'img/微信图片_20250516174506.jpg';
+            qrTitle.innerText = '请使用微信扫码付款';
+        }
+        alipay.onclick = function () {
+            alipay.classList.add('selected');
+            wechat.classList.remove('selected');
+            qrImg.src = 'img/微信图片_20250516174509.jpg';
+            qrTitle.innerText = '请使用支付宝扫码付款';
+        }
+    </script>
+
+
+
+    <!-- 页脚 -->
+    <footer
+        style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+                <a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+                <a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+                <a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+            </div>
+            <div style="margin-bottom:8px;">
+                © 2025 SEVENTEEN CLOTHING. 保留所有权利.
+            </div>
+            <div style="font-size:14px; color:#bbb;">
+                联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+</body>
+
+</html>

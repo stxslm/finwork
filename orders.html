@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单 - SEVENTEEN CLOTHING</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/personal.css">
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+            font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        #content {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            gap: 36px;
+        }
+
+        .sidebar {
+            width: 220px;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #f3eaea;
+            padding: 24px 0;
+        }
+
+        .sidebar-card h2 {
+            text-align: center;
+            color: #F33F3F;
+            margin-bottom: 18px;
+        }
+
+        .sidebar-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-card li {
+            margin: 0;
+        }
+
+        .sidebar-card a {
+            display: block;
+            padding: 14px 32px;
+            color: #232323;
+            text-decoration: none;
+            font-size: 18px;
+            border-left: 4px solid transparent;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .sidebar-card li.active a,
+        .sidebar-card a:hover {
+            background: #fff3f3;
+            color: #F33F3F;
+            border-left: 4px solid #F33F3F;
+        }
+
+        .main {
+            flex: 1;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #f3eaea;
+            padding: 32px 36px;
+            min-height: 600px;
+        }
+
+        .main h2 {
+            color: #F33F3F;
+            margin-bottom: 24px;
+        }
+
+        .order-filter {
+            margin-bottom: 24px;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .order-filter label {
+            font-size: 16px;
+            color: #232323;
+        }
+
+        .order-filter select,
+        .order-filter input[type="text"] {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+
+        .order-table th,
+        .order-table td {
+            padding: 14px 10px;
+            text-align: center;
+            border-bottom: 1px solid #f3eaea;
+        }
+
+        .order-table th {
+            background: #fff3f3;
+            color: #F33F3F;
+            font-size: 17px;
+        }
+
+        .order-table td {
+            font-size: 16px;
+            color: #232323;
+        }
+
+        .order-status {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            display: inline-block;
+        }
+
+        .order-status.wait {
+            background: #fffbe6;
+            color: #b26d00;
+        }
+
+        .order-status.done {
+            background: #e6ffed;
+            color: #1a7f37;
+        }
+
+        .order-status.cancel {
+            background: #ffeaea;
+            color: #d12c2c;
+        }
+
+        .order-action a {
+            color: #F33F3F;
+            text-decoration: underline;
+            margin: 0 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            #content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .main {
+                padding: 18px 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 主体内容 -->
+    <div id="content">
+        <!-- 侧边导航 -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <h2>个人中心</h2>
+                <ul>
+                    <li><a href="personal.html"><span class="icon">👤</span>账户信息</a></li>
+                    <li class="active"><a href="orders.html"><span class="icon">🧾</span>我的订单</a></li>
+                    <li><a href="address.html"><span class="icon">🏠</span>收货地址</a></li>
+                    <li><a href="favorites.html"><span class="icon">❤️</span>我的收藏</a></li>
+                    <li><a href="settings.html"><span class="icon">⚙️</span>账户设置</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 主内容区 -->
+        <div class="main">
+            <h2>我的订单</h2>
+            <div class="order-filter">
+                <label for="status">订单状态：</label>
+                <select id="status">
+                    <option value="">全部</option>
+                    <option value="wait">待付款</option>
+                    <option value="done">已完成</option>
+                    <option value="cancel">已取消</option>
+                </select>
+                <label for="search">订单号：</label>
+                <input type="text" id="search" placeholder="输入订单号">
+                <button id="filterBtn"
+                    style="padding:6px 18px; border:none; background:#F33F3F; color:#fff; border-radius:8px; cursor:pointer;">筛选</button>
+            </div>
+            <table class="order-table" id="orderTable">
+                <thead>
+                    <tr>
+                        <th>订单号</th>
+                        <th>日期</th>
+                        <th>金额</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>202505170001</td>
+                        <td>2025-05-17</td>
+                        <td>&yen;899.00</td>
+                        <td><span class="order-status wait">待付款</span></td>
+                        <td class="order-action">
+                            <a href="pay.html">去支付</a>
+                            <a href="order-detail.html">查看</a>
+                            <a href="javascript:;" class="cancel-btn">取消</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>202505160002</td>
+                        <td>2025-05-16</td>
+                        <td>&yen;1998.00</td>
+                        <td><span class="order-status done">已完成</span></td>
+                        <td class="order-action">
+                            <a href="order-detail.html">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>202505150003</td>
+                        <td>2025-05-15</td>
+                        <td>&yen;399.00</td>
+                        <td><span class="order-status cancel">已取消</span></td>
+                        <td class="order-action">
+                            <a href="order-detail.html">查看</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="noResult" style="display:none; color:#F33F3F; text-align:center; margin-top:32px; font-size:18px;">
+                暂无符合条件的订单
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer
+        style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+                <a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+                <a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+                <a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+            </div>
+            <div style="margin-bottom:8px;">
+                © 2025 SEVENTEEN CLOTHING. 保留所有权利.
+            </div>
+            <div style="font-size:14px; color:#bbb;">
+                联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+            </div>
+        </div>
+    </footer>
+    <script>
+        // 订单筛选功能
+        const statusSelect = document.getElementById('status');
+        const searchInput = document.getElementById('search');
+        const filterBtn = document.getElementById('filterBtn');
+        const table = document.getElementById('orderTable');
+        const noResult = document.getElementById('noResult');
+
+        filterBtn.onclick = function () {
+            const status = statusSelect.value;
+            const search = searchInput.value.trim();
+            let hasResult = false;
+            for (let i = 1; i < table.rows.length; i++) {
+                const row = table.rows[i];
+                if (!row.querySelector) continue;
+                const orderId = row.cells[0].innerText;
+                const orderStatus = row.cells[3].innerText;
+                let show = true;
+                if (status && !row.querySelector('.order-status').classList.contains(status)) show = false;
+                if (search && !orderId.includes(search)) show = false;
+                row.style.display = show ? '' : 'none';
+                if (show) hasResult = true;
+            }
+            noResult.style.display = hasResult ? 'none' : '';
+        };
+
+        // 取消订单按钮演示
+        document.querySelectorAll('.cancel-btn').forEach(btn => {
+            btn.onclick = function () {
+                if (confirm('确定要取消该订单吗？')) {
+                    const statusSpan = btn.parentElement.parentElement.querySelector('.order-status');
+                    statusSpan.innerText = '已取消';
+                    statusSpan.className = 'order-status cancel';
+                    btn.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

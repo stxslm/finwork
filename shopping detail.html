@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>购买详情</title>
+	<link rel="stylesheet" href="css/shopping detail.css">
+	<link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+	<style>
+		/* 优化整体显示效果，卡片化、阴影、圆角、按钮美化、响应式 */
+		body {
+			background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+			font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+			margin: 0;
+			min-height: 100vh;
+		}
+
+		#logo {
+			height: 100px;
+			width: 100%;
+			background: #232323;
+			font-size: 44px;
+			line-height: 100px;
+			text-align: center;
+			letter-spacing: 4px;
+		}
+
+		#logo a {
+			color: #F33F3F;
+			font-size: 44px;
+			text-decoration: none;
+			font-weight: bold;
+		}
+
+		#lead {
+			margin-bottom: 24px;
+			height: 60px;
+			text-align: center;
+			font-size: 20px;
+			background: #232323;
+			box-shadow: 0 2px 12px #eee;
+			border-bottom: 2px solid #F33F3F;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+		}
+
+		#lead table {
+			margin: 0 auto;
+			background: none;
+		}
+
+		#lead td a {
+			display: inline-block;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 12px 18px;
+			border-radius: 20px;
+			text-decoration: none;
+			transition: background 0.2s, color 0.2s;
+			margin: 0 4px;
+		}
+
+		#lead td a:hover {
+			background: #F33F3F;
+			color: #fff;
+		}
+
+		#content {
+			width: 1200px;
+			margin: 32px auto 0 auto;
+			display: flex;
+			gap: 36px;
+			background: #fff;
+			border-radius: 18px;
+			box-shadow: 0 4px 24px #f3eaea;
+			padding: 36px 36px 28px 36px;
+		}
+
+		#pic {
+			width: 480px;
+			min-width: 320px;
+		}
+
+
+		.picList {
+			width: 400px;
+			margin: 18px auto 0 auto;
+		}
+
+		#fj {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 12px;
+		}
+
+		#fj img {
+			cursor: pointer;
+			border-radius: 8px;
+			border: 2px solid transparent;
+			transition: border 0.2s, transform 0.2s;
+		}
+
+		#fj img:hover {
+			border: 2px solid #F33F3F;
+			transform: scale(1.05);
+		}
+
+		.p3 {
+			clear: both;
+			margin-top: 18px;
+			text-align: center;
+		}
+
+		.p3 img {
+			width: 120px;
+			height: 40px;
+		}
+
+		#shop {
+			width: 600px;
+			min-width: 320px;
+		}
+
+		#shop b font {
+			font-size: 26px !important;
+			color: #F33F3F;
+			letter-spacing: 2px;
+		}
+
+		#t1,
+		#t2,
+		#t3,
+		#t4 {
+			width: 100%;
+			margin-bottom: 12px;
+			border-radius: 10px;
+			box-shadow: 0 1px 6px #f3eaea;
+			background: #fff7f0;
+		}
+
+		#t1 {
+			background-color: #ECEBEB;
+		}
+
+		#t1 td,
+		#t2 td,
+		#t3 td,
+		#t4 td {
+			padding: 8px 6px;
+		}
+
+		.btn0 {
+			width: 100px;
+			height: 34px;
+			font-size: 14px;
+			background: #fff;
+			border: 1.5px solid #F33F3F;
+			border-radius: 16px;
+			cursor: pointer;
+			transition: border 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+			margin-right: 8px;
+		}
+
+		.btn0:hover,
+		.btn0.active {
+			border: 2.5px solid #B12704;
+			background: #fff3f3;
+			color: #F33F3F;
+			transform: scale(1.04);
+		}
+
+		button {
+			cursor: pointer;
+		}
+
+		.btn1,
+		.btn2 {
+			width: 180px;
+			height: 50px;
+			font-size: 20px;
+			border-radius: 25px;
+			border: none;
+			margin-right: 18px;
+			transition: background 0.2s, transform 0.2s;
+		}
+
+		.btn1 {
+			color: #fff;
+			background: #F33F3F;
+			font-weight: bold;
+			border: none;
+		}
+
+		.btn1:hover {
+			background: #d12c2c;
+			transform: scale(1.04);
+		}
+
+		.btn2 {
+			color: #fff;
+			background: #232323;
+			border: none;
+		}
+
+		.btn2:hover {
+			background: #F33F3F;
+			transform: scale(1.04);
+		}
+
+		.img1 {
+			padding-right: 4px;
+			width: 30px;
+			height: 23px;
+			vertical-align: middle;
+		}
+
+		#t4 td {
+			color: #666;
+			font-size: 15px;
+		}
+
+		#t4 td:first-child {
+			color: #999;
+		}
+
+		#guess {
+			width: 1200px;
+			margin: 60px auto 0 auto;
+			background: #fff;
+			border-radius: 18px;
+			box-shadow: 0 4px 24px #f3eaea;
+			padding: 24px 0 18px 0;
+		}
+
+		#guess p {
+			text-align: center;
+			font-size: 24px;
+			color: #F33F3F;
+			font-weight: bold;
+			letter-spacing: 2px;
+			margin-bottom: 18px;
+		}
+
+		#t5 {
+			width: 100%;
+		}
+
+		#t5 img {
+			width: 220px;
+			height: 340px;
+			border-radius: 14px;
+			box-shadow: 0 2px 12px #f3eaea;
+			transition: transform 0.2s;
+		}
+
+		#t5 img:hover {
+			transform: scale(1.04);
+		}
+
+		.tr6 td {
+			font-size: 18px;
+			color: #F33F3F;
+			font-weight: bold;
+		}
+
+		#x1 {
+			margin: 40px auto 0 auto;
+			line-height: 70px;
+			height: 70px;
+			width: 1200px;
+			font-size: 22px;
+			color: #232323;
+			font-weight: bold;
+			letter-spacing: 2px;
+		}
+
+		#canshu,
+		#view,
+		#size-guide,
+		#d1 {
+			width: 900px;
+			margin: 24px auto;
+			background: #fff;
+			border-radius: 16px;
+			box-shadow: 0 2px 12px #f3eaea;
+			padding: 24px 24px 18px 24px;
+		}
+
+		#canshu table,
+		#view ul {
+			width: 100%;
+		}
+
+		#canshu td {
+			padding: 6px 10px;
+			font-size: 15px;
+			color: #666;
+		}
+
+		#view ul {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 18px;
+			justify-content: flex-start;
+			padding: 0;
+		}
+
+		#view li {
+			list-style: none;
+		}
+
+		#view img {
+			width: 180px;
+			height: 280px;
+			border-radius: 10px;
+			object-fit: cover;
+			box-shadow: 0 1px 6px #f3eaea;
+		}
+
+		#size-guide img,
+		#d1 img {
+			width: 100%;
+			max-width: 800px;
+			border-radius: 10px;
+			margin-top: 10px;
+		}
+
+		@media (max-width: 1300px) {
+
+			#content,
+			#guess,
+			#x1,
+			#canshu,
+			#view,
+			#size-guide,
+			#d1 {
+				width: 98vw;
+				min-width: 0;
+				padding: 8px 2vw;
+			}
+		}
+
+		@media (max-width: 900px) {
+			#content {
+				flex-direction: column;
+				width: 98vw;
+				padding: 12px 2vw;
+			}
+
+			#pic,
+			#shop {
+				width: 100%;
+				min-width: 0;
+			}
+
+			#guess,
+			#x1,
+			#canshu,
+			#view,
+			#size-guide,
+			#d1 {
+				width: 98vw;
+				padding: 8px 2vw;
+			}
+
+			#t5 img {
+				width: 120px;
+				height: 180px;
+			}
+
+			#view img {
+				width: 90px;
+				height: 140px;
+			}
+		}
+
+		@media (max-width: 600px) {
+			#logo {
+				font-size: 22px;
+				line-height: 60px;
+				height: 60px;
+			}
+
+			#logo a {
+				font-size: 22px;
+			}
+
+			#lead {
+				height: 44px;
+				font-size: 14px;
+			}
+
+			#lead td a {
+				font-size: 14px;
+				padding: 6px 8px;
+			}
+
+			#content,
+			#guess,
+			#x1,
+			#canshu,
+			#view,
+			#size-guide,
+			#d1 {
+				width: 100vw;
+				padding: 4px 0;
+			}
+
+			#pic,
+			#shop {
+				width: 100%;
+			}
+
+			#big-img,
+			.preview {
+				width: 100%;
+			}
+
+			#t5 img {
+				width: 80px;
+				height: 120px;
+			}
+
+			#view img {
+				width: 60px;
+				height: 90px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 顶部logo -->
+	<div id="logo">
+		<a href="index.html">SEVENTEEN</a>
+	</div>
+	<!-- 服饰分类导航lead -->
+	<div id="lead">
+		<table id="t0">
+			<tr>
+				<td><a href="index.html">主页</a></td>
+				<td><a href="product.html">新品|女士</a></td>
+				<td><a href="#">新品|男士</a></td>
+				<td><a href="#">新品|儿童</a></td>
+				<td><a href="#">新品|鞋包</a></td>
+				<td><a href="about us.html">品牌形象</a></td>
+			</tr>
+		</table>
+	</div>
+	<!-- 内容 -->
+	<div id="content">
+
+		<!-- 模特图 -->
+		<div id=pic>
+			<!-- 预览图区域 -->
+			<div class='preview'>
+				<img id="big-img" src="img/v1.jpg" alt="" width="400px">
+				<div id='fangda'></div>
+				<div id='fangdaImg'>
+					<img src="img/v1.jpg" alt="" class="realImg">
+				</div>
+			</div>
+			<div class="picList">
+				<ul id="fj">
+					<li>
+
+						<img src="img/v1.jpg" width="60px" alt="蒲公英">
+
+					</li>
+					<li>
+
+						<img src="img/v3.jpg" width="60px" alt="花朵">
+
+					</li>
+					<li>
+
+						<img src="img/v2.jpg" width="60px" alt="树木">
+
+					</li>
+					<li>
+
+						<img src="img/v4.jpg" width="60px" alt="动物">
+
+					</li>
+					<li>
+
+						<img src="img/v5.jpg" width="60px" alt="大熊">
+
+					</li>
+				</ul>
+			</div>
+
+			<div class="p3"><a href="#"><img src="img/2020-06-06_170438.png" alt=""></a></div>
+		</div>
+
+		<!-- 尺寸 -->
+		<div id=shop>
+
+			<b>
+				<font size=5px>SEVENTEEN新款 女装 款冬休闲西装外套</font>
+			</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="detail.html"><br>
+				<table id="t1">
+					<tr>
+						<td class="td1">
+							<font size="2px" color="#999999">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</font>
+						</td>
+						<td class="td2">
+							<font size="2px" color="#B12704"><b>&yen;899.00</b></font>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1">
+							<font size="1px" color="#999999">本店活动</font>
+						</td>
+						<td class="td2">
+							<font size="2px" color="#C2625F">满199元,包邮</font>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<p>
+					<font size="2px" color="#999999">运&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;费</font>&nbsp; <font size=2px
+						color="#212F40"> 10.00</font>
+				</p>
+				<hr width=600px color="#F2F2F2">
+				<p><a href="conment.html">
+						<font size="2px" color="#999999">累计评价</font>&nbsp; <font size="3px" color="#B12704"><b>20</b>
+						</font>
+					</a></p>
+				<hr width=600px color="#F2F2F2">
+				<br>
+				<table id=t2>
+					<tr class="tr1">
+						<td>
+							<font size="3px" color="#999999">尺码</font>
+						</td>
+						<td><button isSelected='false' class="btn0">XS(160/80A)</button></td>
+						<td><button isSelected='false' class="btn0">S(165/84A)</button></td>
+						<td><button isSelected='false' class="btn0">M(170/88A)</button></td>
+						<td><button isSelected='false' class="btn0">L(175/96A)</button></td>
+					</tr>
+					<tr class="tr2">
+						<td>
+							<font size="3px" color="#999999">颜色分类</font>
+						</td>
+						<td colspan="4"><img width=60px src="img/v7.jpg" alt=""></td>
+					</tr>
+					<tr class=tr3>
+						<td>
+							<font size="3px" color="#999999">数量(限购3件)</font>
+						</td>
+						<td colspan="4">
+							　<ul class="btn-numbox">
+
+								<li>
+									<ul class="count">
+										<li><span id="num-jian" class="num-jian">-</span></li>
+										<li><input type="text" class="input-num" id="input-num" value="0" /></li>
+										<li><span id="num-jia" class="num-jia">+</span></li>
+									</ul>
+								</li>
+								<li><span class="kucun">（库存:54）</span></li>
+								　　　
+							</ul>
+						</td>
+					</tr>
+				</table>
+				<table id="t3">
+					<form action="">
+						<td><button class="btn1"><a href="pay.html">立即购买</a></button></td>
+						<td><button class="btn2"><img class="img1" src="img/t4.jpg" alt="">加入购物车</button></td>
+					</form>
+					</tr>
+				</table>
+				<table id="t4">
+					<tr>
+						<td>
+							<font size="3px" color="#999999">服务承诺</font>
+						</td>
+						<td>
+							<font size="3px" color="#666666">正品保证</font>
+						</td>
+						<td>
+							<font size="3px" color="#666666">极速退款</font>
+						</td>
+						<td>
+							<font size="3px" color="#666666">赠送运费险</font>
+						</td>
+						<td>
+							<font size="3px" color="#666666">七天无理由退款</font>
+						</td>
+					</tr>
+				</table>
+
+		</div>
+	</div>
+
+	<!-- 猜你喜欢 -->
+	<div id="guess">
+		<p>
+			<font size=5px>猜你喜欢</font>
+		</p>
+		<table id="t5">
+			<tr class="tr5">
+				<td align=center><a href="#"><img src="img/1591411410070..jpg" alt=""></a></td>
+				<td align=center><a href="#"><img src="img/1591413692671..jpg" alt=""></a></td>
+				<td align=cente><a href="#"><img src="img/1591413638130..jpg" alt=""></a></td>
+				<td align=center><a href="#"><img src="img/1591413597323..jpg" alt=""></a></td>
+			</tr>
+			<tr class="tr6">
+				<td align=center width="280px">&yen;499</td>
+				<td align=center width="280px">&yen;399</td>
+				<td align=center width="280px">&yen;299</td>
+				<td align=center width="280px">&yen;299</td>
+			</tr>
+		</table>
+	</div>
+	<div id=x1>
+		<font size="5px">详情&nbsp;</font>
+	</div>
+	<div id=canshu>
+
+		<table align="center" class="tb1">
+			<tr>
+				<td colspan="3">品牌名称：SEVENTEEN</td>
+			</tr>
+			<tr>
+				<td colspan="3">产品参数：</td>
+
+			</tr>
+			<tr>
+				<td>品牌名称：SEVENTEEN</td>
+				<td>适用年龄: 25-29周岁</td>
+				<td>尺码: XS (160/80A) S (165/84A) ...</td>
+			</tr>
+			<tr>
+				<td>图案: 纯色</td>
+				<td>领子: 其他</td>
+				<td>衣门襟: 系带</td>
+			</tr>
+			<tr>
+				<td>颜色分类: 驼色</td>
+				<td>袖型: 常规</td>
+				<td>年份季节: 2019年冬季</td>
+			</tr>
+			<tr>
+				<td>袖长: 长袖</td>
+				<td>衣长: 常规</td>
+				<td>服装版型: 直筒</td>
+			</tr>
+			<tr>
+				<td>服装款式细节: 口袋 绑带</td>
+				<td colspan="2">销售渠道类型: 商场同款(线上线下都销售)</td>
+
+			</tr>
+		</table>
+	</div>
+	<div id="view">
+		<b>Product views-商品图</b>
+		<ul>
+			<li><img src="img/v1.jpg" alt=""></li>
+			<li><img src="img/v2.jpg" alt=""></li>
+			<li><img src="img/v3.jpg" alt=""></li>
+			<li><img src="img/v4.jpg" alt=""></li>
+			<li><img src="img/v5.jpg" alt=""></li>
+		</ul>
+	</div>
+	<div id="size-guide">
+		<b>Size guide-尺码指南</b>
+		<img src="img/v8.png" alt="">
+	</div>
+	<div id=d1>
+		<b>了解面料知识</b>
+		<img src="img/v9.png" alt="">
+	</div>
+	<script src="js/shopping detail.js"></script>
+	<script>
+		// 购买数量控制
+		var des = document.getElementById('des');
+		var img = document.getElementById('big-img');
+		var ul = document.getElementById('fj');
+		var a = ul.getElementsByTagName('a');
+		for (var i = 0; i < a.length; i++) {
+			a[i].οnclick = function () {
+				console.log(this);
+				des.innerText = this.title;
+				img.src = this.href;
+				return false;
+			}
+		}
+
+		var num_jia = document.querySelector(".num-jia");
+		var num_jian = document.querySelector(".num-jian");
+		var input_num = document.getElementById("input-num");
+		console.log(input_num)
+		num_jia.onclick = function () {
+			console.log(input_num.value)
+			if (input_num.value < 3) { input_num.value = parseInt(input_num.value) + 1; }
+			else {
+				input_num.value = 3
+			}
+		}
+
+		num_jian.onclick = function () {
+			console.log(input_num.value)
+			if (input_num.value <= 0) {
+				input_num.value = 0;
+
+			} else {
+
+				input_num.value = parseInt(input_num.value) - 1;
+			}
+
+		}
+		// 放大镜功能
+
+
+
+	</script>
+
+
+
+
+	<!-- 页脚 -->
+	<footer
+		style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+		<div style="max-width:1200px; margin:0 auto;">
+			<div style="margin-bottom:12px;">
+				<a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+				<a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+				<a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+				<a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+			</div>
+			<div style="margin-bottom:8px;">
+				© 2025 SEVENTEEN CLOTHING. 保留所有权利.
+			</div>
+			<div style="font-size:14px; color:#bbb;">
+				联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+			</div>
+		</div>
+	</footer>
+
+
+
+</body>
+
+</html>

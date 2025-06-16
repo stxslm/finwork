@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账户设置 - SEVENTEEN CLOTHING</title>
+    <link rel="stylesheet" type="text/css" href="CSS/personal.css">
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+            font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        #content {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            gap: 36px;
+        }
+
+        .sidebar {
+            width: 220px;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #f3eaea;
+            padding: 24px 0;
+        }
+
+        .sidebar-card h2 {
+            text-align: center;
+            color: #F33F3F;
+            margin-bottom: 18px;
+        }
+
+        .sidebar-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-card li {
+            margin: 0;
+        }
+
+        .sidebar-card a {
+            display: block;
+            padding: 14px 32px;
+            color: #232323;
+            text-decoration: none;
+            font-size: 18px;
+            border-left: 4px solid transparent;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .sidebar-card li.active a,
+        .sidebar-card a:hover {
+            background: #fff3f3;
+            color: #F33F3F;
+            border-left: 4px solid #F33F3F;
+        }
+
+        .main {
+            flex: 1;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #f3eaea;
+            padding: 32px 36px;
+            min-height: 600px;
+        }
+
+        .main h2 {
+            color: #F33F3F;
+            margin-bottom: 24px;
+        }
+
+        .section {
+            margin-bottom: 36px;
+        }
+
+        .section h3 {
+            color: #F33F3F;
+            margin-bottom: 16px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            color: #232323;
+            font-size: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #232323;
+        }
+
+        input[type="password"],
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background: #F33F3F;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 18px;
+            transition: background 0.2s;
+        }
+
+        .btn:last-child {
+            background: #bbb;
+            margin-right: 0;
+        }
+
+        .btn:hover {
+            background: #d12c2c;
+        }
+
+        .btn:last-child:hover {
+            background: #999;
+        }
+
+        .danger-zone {
+            background: #fff3f3;
+            border-radius: 10px;
+            padding: 18px 24px;
+            color: #d12c2c;
+            margin-top: 36px;
+        }
+
+        .danger-zone button {
+            background: #d12c2c;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 22px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .danger-zone button:hover {
+            background: #a51a1a;
+        }
+
+        @media (max-width: 900px) {
+            #content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .main {
+                padding: 18px 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <!-- 侧边导航 -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <h2>个人中心</h2>
+                <ul>
+                    <li><a href="personal.html"><span class="icon">👤</span>账户信息</a></li>
+                    <li><a href="orders.html"><span class="icon">🧾</span>我的订单</a></li>
+                    <li><a href="address.html"><span class="icon">🏠</span>收货地址</a></li>
+                    <li><a href="favorites.html"><span class="icon">❤️</span>我的收藏</a></li>
+                    <li class="active"><a href="settings.html"><span class="icon">⚙️</span>账户设置</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 主内容区 -->
+        <div class="main">
+            <h2>账户设置</h2>
+
+            <!-- 账号信息 -->
+            <div class="section">
+                <h3>账号信息</h3>
+                <ul class="info-list">
+                    <li>用户名：23215220122+单小龙</li>
+                    <li>注册邮箱：stxslm@outlook.com</li>
+                    <li>注册时间：2024-05-01</li>
+                    <li>上次登录：2025-05-27 14:32</li>
+                    <li>账号状态：正常</li>
+                </ul>
+            </div>
+
+            <!-- 密码修改 -->
+            <div class="section">
+                <h3>修改密码</h3>
+                <form id="pwdForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="oldPwd">原密码</label>
+                            <input type="password" id="oldPwd" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPwd">新密码</label>
+                            <input type="password" id="newPwd" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPwd">确认新密码</label>
+                            <input type="password" id="confirmPwd" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">修改密码</button>
+                </form>
+            </div>
+
+            <!-- 账号切换与注销 -->
+            <div class="section">
+                <h3>账号操作</h3>
+                <button class="btn" onclick="window.location.href='login.html'">切换账号</button>
+                <button class="btn" id="logoutBtn">退出登录</button>
+            </div>
+
+            <!-- 注册信息展示 -->
+            <div class="section">
+                <h3>注册信息</h3>
+                <ul class="info-list">
+                    <li>注册IP：183.60.12.34</li>
+                    <li>注册设备：Windows 10 / Chrome 123</li>
+                    <li>注册来源：官网注册</li>
+                </ul>
+            </div>
+
+            <!-- 账号安全建议 -->
+            <div class="section">
+                <h3>安全建议</h3>
+                <ul class="info-list">
+                    <li>建议定期修改密码，避免与其他网站重复。</li>
+                    <li>开启邮箱验证，提升账户安全。</li>
+                    <li>如发现异常登录请及时修改密码。</li>
+                </ul>
+            </div>
+
+            <!-- 危险操作区 -->
+            <div class="danger-zone">
+                <strong>危险操作：</strong>
+                <br>
+                <button id="deleteAccountBtn">注销并删除账号</button>
+                <div style="font-size:13px; color:#d12c2c; margin-top:8px;">
+                    注销后所有个人数据将被清空且无法恢复，请谨慎操作。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer
+        style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+                <a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+                <a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+                <a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+            </div>
+            <div style="margin-bottom:8px;">
+                © 2025 SEVENTEEN CLOTHING. 保留所有权利.
+            </div>
+            <div style="font-size:14px; color:#bbb;">
+                联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+            </div>
+        </div>
+    </footer>
+    <script>
+        // 密码修改表单演示
+        document.getElementById('pwdForm').onsubmit = function (e) {
+            e.preventDefault();
+            const oldPwd = document.getElementById('oldPwd').value;
+            const newPwd = document.getElementById('newPwd').value;
+            const confirmPwd = document.getElementById('confirmPwd').value;
+            if (newPwd !== confirmPwd) {
+                alert('两次输入的新密码不一致！');
+                return;
+            }
+            if (newPwd.length < 6) {
+                alert('新密码长度不能少于6位！');
+                return;
+            }
+            alert('密码修改成功！（演示页面，无实际修改）');
+            document.getElementById('pwdForm').reset();
+        };
+
+        // 退出登录
+        document.getElementById('logoutBtn').onclick = function () {
+            if (confirm('确定要退出登录吗？')) {
+                window.location.href = 'login.html';
+            }
+        };
+
+        // 注销账号
+        document.getElementById('deleteAccountBtn').onclick = function () {
+            if (confirm('注销后所有数据将被清空且无法恢复，确定要注销账号吗？')) {
+                alert('账号已注销！（演示页面，无实际操作）');
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+</body>
+
+</html>

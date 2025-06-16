@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - SEVENTEEN CLOTHING</title>
+    <link rel="stylesheet" type="text/css" href="CSS/personal.css">
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 顶部导航 -->
+    <div id="top">
+        <div class="containerTop">
+            <ul class="right">
+                <li><a href="login.html">登录</a></li>
+                <li><a href="register.html">注册</a></li>
+                <li class="car"><a href="shopping car.html">购物车</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 主导航栏 -->
+    <div id="guide">
+        <div class="containerTop">
+            <div class="logo left">
+                <a href="index.html">SEVENTEEN <span
+                        style="color:#fff;font-size:28px;font-weight:normal;">CLOTHING</span></a>
+            </div>
+
+            <ul class="nav right">
+                <li><a href="index.html">主页</a></li>
+                <li><a href="product.html">我们的产品</a></li>
+                <li><a href="about us.html">品牌形象</a></li>
+                <li><a href="messageboard.html">联系我们</a></li>
+                <li><a href="personal.html">个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 主体内容 -->
+    <div id="content">
+        <!-- 侧边导航 -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <h2>个人中心</h2>
+                <ul>
+                    <li class="active"><a href="personal.html">
+                            <span class="icon">👤</span>账户信息</a></li>
+                    <li><a href="orders.html"><span class="icon">🧾</span>我的订单</a></li>
+                    <li><a href="address.html"><span class="icon">🏠</span>收货地址</a></li>
+                    <li><a href="favorites.html"><span class="icon">❤️</span>我的收藏</a></li>
+                    <li><a href="settings.html"><span class="icon">⚙️</span>账户设置</a></li>
+                    <li><a href="message.html"><span class="icon">🔔</span>消息通知</a></li>
+
+                </ul>
+
+                <!-- 新增：账户等级和积分 -->
+                <div
+                    style="margin-top:28px; background:#fffbe6; border-radius:8px; padding:14px 10px; text-align:center;">
+                    <div style="font-size:17px; color:#F33F3F; font-weight:bold;">账户等级：<span
+                            style="color:#f56600;">黄金会员</span></div>
+                    <div style="margin-top:6px; color:#b26d00;">积分：<span style="font-weight:bold;">1280</span></div>
+                    <div style="margin-top:8px;">
+                        <a href="vip.html" style="color:#f56600; font-size:14px;">了解会员权益 &gt;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 主内容区域 -->
+        <div class="main">
+            <div class="welcome-card" id="welcomeCard">
+                <img class="avatar" src="img/头像.png" alt="头像" onerror="this.src='img/default-avatar.png'">
+                <div class="welcome-text">
+                    <h2 style="margin-bottom:10px;">欢迎，23215220122+单小龙</h2>
+                    <div class="user-info">
+                        <p>邮箱：stxslm@outlook.com</p>
+                        <p>手机号码：18024199799</p>
+                    </div>
+                </div>
+                <!-- ...existing code... -->
+                <button class="edit-btn" onclick="window.location.href='edit-personal.html'">编辑资料</button>
+                <!-- ...existing code... -->
+            </div>
+
+
+            <!-- 新增：成长进度条 -->
+            <div
+                style="margin:28px 0 32px 0; background:#fff; border-radius:12px; padding:18px 24px; box-shadow:0 2px 8px #f3eaea;">
+                <div style="font-size:16px; color:#888; margin-bottom:8px;">成长值进度</div>
+                <div style="background:#ffe5e5; border-radius:8px; height:18px; width:100%; overflow:hidden;">
+                    <div
+                        style="background:linear-gradient(90deg,#F33F3F,#f56600); width:64%; height:100%; border-radius:8px;">
+                    </div>
+                </div>
+                <div style="font-size:14px; color:#f56600; margin-top:6px;">当前成长值：640 / 1000（升级还差360）</div>
+            </div>
+
+            <div class="account-stats" style="display:flex; gap:32px; margin:32px 0;">
+                <a href="orders.html" style="flex:1; text-decoration:none;">
+                    <div
+                        style="background:#fff7f0; border-radius:14px; padding:24px; text-align:center; box-shadow:0 2px 8px #f3eaea; transition:box-shadow 0.2s;">
+                        <div style="font-size:32px; color:#F33F3F; font-weight:bold;">2</div>
+                        <div style="margin-top:8px; color:#888;">我的订单</div>
+                    </div>
+                </a>
+                <a href="address.html" style="flex:1; text-decoration:none;">
+                    <div
+                        style="background:#fff7f0; border-radius:14px; padding:24px; text-align:center; box-shadow:0 2px 8px #f3eaea; transition:box-shadow 0.2s;">
+                        <div style="font-size:32px; color:#F33F3F; font-weight:bold;">1</div>
+                        <div style="margin-top:8px; color:#888;">收货地址</div>
+                    </div>
+                </a>
+                <a href="favorites.html" style="flex:1; text-decoration:none;">
+                    <div
+                        style="background:#fff7f0; border-radius:14px; padding:24px; text-align:center; box-shadow:0 2px 8px #f3eaea; transition:box-shadow 0.2s;">
+                        <div style="font-size:32px; color:#F33F3F; font-weight:bold;">3</div>
+                        <div style="margin-top:8px; color:#888;">我的收藏</div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- 新增：快捷入口 -->
+            <div style="display:flex; gap:24px; margin-bottom:32px;">
+                <a href="orders.html"
+                    style="flex:1; background:#fffbe6; border-radius:10px; padding:18px 0; text-align:center; color:#f56600; font-size:17px; font-weight:bold; text-decoration:none; box-shadow:0 2px 8px #f3eaea; transition:background 0.2s;">
+                    <span style="font-size:22px;">🧾</span><br>查看全部订单
+                </a>
+                <a href="favorites.html"
+                    style="flex:1; background:#fffbe6; border-radius:10px; padding:18px 0; text-align:center; color:#f56600; font-size:17px; font-weight:bold; text-decoration:none; box-shadow:0 2px 8px #f3eaea; transition:background 0.2s;">
+                    <span style="font-size:22px;">❤️</span><br>我的收藏夹
+                </a>
+                <a href="settings.html"
+                    style="flex:1; background:#fffbe6; border-radius:10px; padding:18px 0; text-align:center; color:#f56600; font-size:17px; font-weight:bold; text-decoration:none; box-shadow:0 2px 8px #f3eaea; transition:background 0.2s;">
+                    <span style="font-size:22px;">⚙️</span><br>账户设置
+                </a>
+                <a href="message.html"
+                    style="flex:1; background:#fffbe6; border-radius:10px; padding:18px 0; text-align:center; color:#f56600; font-size:17px; font-weight:bold; text-decoration:none; box-shadow:0 2px 8px #f3eaea; transition:background 0.2s;">
+                    <span style="font-size:22px;">🔔</span><br>消息通知
+                </a>
+            </div>
+
+
+
+            <div class="recent-favorites"
+                style="background:#fff; border-radius:14px; padding:24px; margin-bottom:32px; box-shadow:0 2px 8px #f3eaea;">
+                <h3 style="margin-bottom:18px; color:#F33F3F;">最近收藏</h3>
+                <div style="display:flex; gap:24px;">
+                    <div style="text-align:center;">
+                        <img src="img/q1.png" alt="收藏1"
+                            style="width:80px; height:80px; border-radius:10px; box-shadow:0 2px 8px #eee;">
+                        <div style="margin-top:8px; color:#666;">商品A</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="img/q2.png" alt="收藏2"
+                            style="width:80px; height:80px; border-radius:10px; box-shadow:0 2px 8px #eee;">
+                        <div style="margin-top:8px; color:#666;">商品B</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="img/q3.png" alt="收藏3"
+                            style="width:80px; height:80px; border-radius:10px; box-shadow:0 2px 8px #eee;">
+                        <div style="margin-top:8px; color:#666;">商品C</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 新增：最近消息 -->
+            <div
+                style="background:#fff; border-radius:14px; padding:24px; margin-bottom:32px; box-shadow:0 2px 8px #f3eaea;">
+                <h3 style="margin-bottom:18px; color:#F33F3F;">最近消息</h3>
+                <ul style="list-style:none; padding:0; margin:0;">
+                    <li style="margin-bottom:10px; color:#232323;">
+                        <span style="color:#f56600;">[系统]</span> 您的订单202505170001已发货！
+                    </li>
+                    <li style="margin-bottom:10px; color:#232323;">
+                        <span style="color:#f56600;">[客服]</span> 您的售后申请已受理，请注意查收。
+                    </li>
+                    <li style="color:#232323;">
+                        <span style="color:#f56600;">[活动]</span> 618大促即将开启，快来选购心仪好物！
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="security-tip"
+                style="background:#fffbe6; border-radius:12px; padding:18px 24px; margin-bottom:32px; color:#b26d00; box-shadow:0 2px 8px #f3eaea;">
+                <strong>账户安全提醒：</strong>建议定期修改密码，保护账户安全。如发现异常请及时联系客服。
+            </div>
+
+
+
+
+
+            <div class="order-summary">
+                <h3>最近订单</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>日期</th>
+                            <th>金额</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>202505170001</td>
+                            <td>2025-05-17</td>
+                            <td>&yen;899.00</td>
+                            <td><span class="order-status wait">待付款</span></td>
+                            <td><a href="order-detail.html">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>202505160002</td>
+                            <td>2025-05-16</td>
+                            <td>&yen;1998.00</td>
+                            <td><span class="order-status done">已完成</span></td>
+                            <td><a href="order-detail.html">查看</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <br>
+
+
+
+
+
+
+    <!-- 页脚 -->
+    <footer
+        style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+                <a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+                <a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+                <a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+            </div>
+            <div style="margin-bottom:8px;">
+                © 2025 SEVENTEEN CLOTHING. 保留所有权利.
+            </div>
+            <div style="font-size:14px; color:#bbb;">
+                联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        // 欢迎卡片淡入动画（已用CSS动画）
+        // 侧边栏高亮可根据实际页面跳转动态设置
+        // 订单状态颜色已区分
+        // 你可以继续扩展更多动态效果
+    </script>
+</body>
+
+</html>

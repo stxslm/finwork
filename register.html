@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<link rel="stylesheet" href="CSS/register.css">
+	<link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+	<style>
+		body {
+			background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+			font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+			min-height: 100vh;
+		}
+
+
+
+		#mall-title {
+			font-size: 76px;
+			font-weight: bold;
+			letter-spacing: 6px;
+			color: #F33F3F;
+			margin-bottom: 36px;
+			text-align: center;
+			text-shadow: 0 2px 8px #fff7;
+			user-select: none;
+		}
+
+		.mall-letter {
+			display: inline-block;
+			transition: transform 0.2s cubic-bezier(.4, 2, .6, 1), color 0.2s;
+			cursor: pointer;
+		}
+
+		.mall-letter:hover {
+			transform: translateY(-8px);
+			color: #d12c2c;
+		}
+
+		#form2 {
+			background: rgba(255, 255, 255, 0.95);
+			border-radius: 18px;
+			box-shadow: 0 4px 24px #f3eaea;
+			padding: 38px 38px 32px 38px;
+			/* 下方padding加大 */
+			min-width: 340px;
+			max-width: 95vw;
+			margin-bottom: 30px;
+			width: 500px;
+			/* 扩大表单宽度 */
+			min-height: 380px;
+			/* 增加表单高度 */
+		}
+
+		.form-row {
+			display: flex;
+			align-items: center;
+			margin-bottom: 22px;
+		}
+
+		.form-row label {
+			width: 90px;
+			font-size: 17px;
+			color: #F33F3F;
+			font-weight: bold;
+			letter-spacing: 1px;
+		}
+
+		.form-row input[type="text"],
+		.form-row input[type="password"],
+		.form-row input[type="email"] {
+			flex: 1;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			padding: 8px 12px;
+			font-size: 15px;
+			transition: border 0.2s;
+			margin-left: 8px;
+			background: #fafafa;
+		}
+
+		.form-row input:focus {
+			border: 1.5px solid #F33F3F;
+			outline: none;
+			background: #fff;
+		}
+
+		.toggle-btn {
+			background: #f5f5f5;
+			color: #F33F3F;
+			border: 1px solid #F33F3F;
+			border-radius: 8px;
+			margin-left: 8px;
+			padding: 4px 14px;
+			font-size: 13px;
+			cursor: pointer;
+			transition: background 0.2s, color 0.2s, border 0.2s;
+		}
+
+		.toggle-btn:hover {
+			background: #F33F3F;
+			color: #fff;
+			border: 1px solid #d12c2c;
+		}
+
+		.action-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 18px;
+		}
+
+		.register-btn {
+			background: #F33F3F;
+			color: #fff;
+			border: none;
+			border-radius: 25px;
+			font-size: 20px;
+			font-weight: bold;
+			width: 48%;
+			height: 46px;
+			cursor: pointer;
+			transition: background 0.2s;
+		}
+
+		.register-btn:hover {
+			background: #d12c2c;
+		}
+
+		.login-link {
+			text-align: right;
+			font-size: 15px;
+			color: #000000;
+			width: 48%;
+		}
+
+		.login-link button {
+			background: #f5f5f5;
+			color: #F33F3F;
+			border: 1px solid #F33F3F;
+			border-radius: 8px;
+			padding: 4px 16px;
+			font-size: 14px;
+			cursor: pointer;
+			transition: background 0.2s, color 0.2s, border 0.2s;
+			margin-left: 8px;
+		}
+
+		.login-link button:hover {
+			background: #F33F3F;
+			color: #fff;
+			border: 1px solid #d12c2c;
+		}
+
+		@media (max-width: 600px) {
+			#form2 {
+				padding: 18px 4vw 18px 4vw;
+				min-width: 0;
+				width: 98vw;
+			}
+
+
+			#mall-title {
+				font-size: 52px;
+			}
+
+			.form-row label {
+				width: 70px;
+				font-size: 15px;
+			}
+
+			.register-btn,
+			.login-link {
+				font-size: 15px;
+			}
+		}
+	</style>
+	<script type="text/javascript" src="js/register.js"></script>
+</head>
+
+<body>
+	<div id="registerpage">
+		<div id="mall-title">
+			<span class="mall-letter">S</span>
+			<span class="mall-letter">E</span>
+			<span class="mall-letter">V</span>
+			<span class="mall-letter">E</span>
+			<span class="mall-letter">N</span>
+			<span class="mall-letter">T</span>
+			<span class="mall-letter">E</span>
+			<span class="mall-letter">E</span>
+			<span class="mall-letter">N</span>
+		</div>
+		<div id="form2">
+			<form action="index.html" method="post" onsubmit="return validate()">
+				<div class="form-row">
+					<label for="t1">用户名</label>
+					<input id="t1" type="text" placeholder="不多于11位" maxlength="11" required>
+				</div>
+				<div class="form-row">
+					<label for="t2">密码</label>
+					<input id="t2" name="b" type="password" maxlength="18" placeholder="6-8位密码" required>
+					<button type="button" class="toggle-btn" id="togglePwd">显示</button>
+				</div>
+				<div class="form-row">
+					<label for="t3">确认密码</label>
+					<input id="t3" name="b" type="password" placeholder="请再次输入" required>
+					<button type="button" class="toggle-btn" id="togglePwd2">显示</button>
+				</div>
+				<div class="form-row">
+					<label for="contact">联系方式</label>
+					<input id="contact" name="contact" type="text" maxlength="18" placeholder="电话号码/邮箱" required>
+				</div>
+				<!-- 将按钮整体放入表单内 -->
+				<div class="action-row">
+					<button type="submit" class="register-btn">注册</button>
+					<div class="login-link">
+						已有账号？
+						<button type="button" onclick="window.location.href='login.html'">登录</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+
+
+
+
+		// 注册页面：注册时将用户名和密码保存到localStorage
+
+		function validate() {
+			const username = document.getElementById('t1').value.trim();
+			const pwd = document.getElementById('t2').value.trim();
+			const pwd2 = document.getElementById('t3').value.trim();
+			const contact = document.getElementById('contact').value.trim();
+
+			if (!username || !pwd || !pwd2 || !contact) {
+				alert('请填写完整信息');
+				return false;
+			}
+			if (pwd.length < 6 || pwd.length > 18) {
+				alert('密码长度需为6-18位');
+				return false;
+			}
+			if (pwd !== pwd2) {
+				alert('两次输入的密码不一致');
+				return false;
+			}
+
+			// 读取已有用户
+			let users = JSON.parse(localStorage.getItem('users') || '[]');
+			// 检查用户名是否已存在
+			if (users.some(u => u.username === username)) {
+				alert('用户名已被注册');
+				return false;
+			}
+			// 保存新用户
+			users.push({ username, pwd, contact });
+			localStorage.setItem('users', JSON.stringify(users));
+			alert('注册成功，请登录！');
+			return true;
+		}
+
+
+
+
+		// 密码显示/隐藏
+		document.getElementById('togglePwd').onclick = function () {
+			const pwdInput = document.getElementById('t2');
+			if (pwdInput.type === 'password') {
+				pwdInput.type = 'text';
+				this.textContent = '隐藏';
+			} else {
+				pwdInput.type = 'password';
+				this.textContent = '显示';
+			}
+		};
+		document.getElementById('togglePwd2').onclick = function () {
+			const pwdInput = document.getElementById('t3');
+			if (pwdInput.type === 'password') {
+				pwdInput.type = 'text';
+				this.textContent = '隐藏';
+			} else {
+				pwdInput.type = 'password';
+				this.textContent = '显示';
+			}
+		};
+	</script>
+</body>
+
+</html>

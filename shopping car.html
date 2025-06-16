@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link href="css/shopping car.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+	<title>购物车</title>
+	<style>
+		body {
+			background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+			font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+			margin: 0;
+			min-height: 100vh;
+		}
+
+		#lead {
+			background: #232323;
+			box-shadow: 0 2px 12px #eee;
+			border-bottom: 2px solid #F33F3F;
+			margin-bottom: 40px;
+			height: 68px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+		}
+
+		#lead table {
+			margin: 0 auto;
+			background: none;
+		}
+
+		#lead td a,
+		#lead #logo a {
+			display: inline-block;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 12px 18px;
+			border-radius: 20px;
+			text-decoration: none;
+			transition: background 0.2s, color 0.2s;
+			margin: 0 4px;
+		}
+
+		#lead td a:hover,
+		#lead #logo a:hover {
+			background: #F33F3F;
+			color: #fff;
+		}
+
+		#lead #logo a {
+			color: #F33F3F;
+			font-size: 28px;
+			padding: 0 18px;
+			background: none;
+			letter-spacing: 2px;
+		}
+
+		#jsTrolley {
+			width: 90%;
+			max-width: 900px;
+			margin: 40px auto 0 auto;
+			background: #fff;
+			border-radius: 16px;
+			box-shadow: 0 4px 24px #f3eaea;
+			border-collapse: separate;
+			border-spacing: 0;
+			overflow: hidden;
+			animation: fadeInDown 0.8s;
+		}
+
+		#jsTrolley th,
+		#jsTrolley td {
+			padding: 18px 12px;
+			text-align: center;
+			font-size: 17px;
+		}
+
+		#jsTrolley thead th {
+			background: #fff3f3;
+			color: #F33F3F;
+			font-size: 18px;
+			font-weight: bold;
+			border-bottom: 2px solid #f3eaea;
+		}
+
+		#jsTrolley tbody tr {
+			transition: background 0.2s;
+		}
+
+		#jsTrolley tbody tr:hover {
+			background: #fff7f0;
+		}
+
+		#jsTrolley img {
+			width: 80px;
+			height: 80px;
+			border-radius: 12px;
+			object-fit: cover;
+			box-shadow: 0 2px 8px #f3eaea;
+		}
+
+		.del {
+			color: #fff;
+			background: #F33F3F;
+			border-radius: 16px;
+			padding: 6px 18px;
+			text-decoration: none;
+			font-size: 15px;
+			transition: background 0.2s;
+			margin: 0 4px;
+			display: inline-block;
+		}
+
+		.del:hover {
+			background: #d12c2c;
+		}
+
+		#jsTrolley tfoot th,
+		#jsTrolley tfoot td {
+			background: #fff3f3;
+			color: #F33F3F;
+			font-size: 17px;
+			border-top: 2px solid #f3eaea;
+		}
+
+		.goods1 {
+			max-width: 900px;
+			margin: 24px auto 0 auto;
+			text-align: right;
+		}
+
+		.btn {
+			background: #F33F3F;
+			color: #fff;
+			border: none;
+			border-radius: 20px;
+			padding: 18px 56px;
+			font-size: 20px;
+			cursor: pointer;
+			margin-right: 24px;
+			transition: background 0.2s;
+			letter-spacing: 2px;
+			min-width: 180px;
+			box-sizing: border-box;
+			white-space: nowrap;
+			display: inline-flex;
+			/* 关键：使用flex布局 */
+			align-items: center;
+			/* 垂直居中 */
+			justify-content: center;
+			/* 水平居中 */
+			text-align: center;
+			/* 文字居中 */
+			vertical-align: middle;
+			/* 行内居中 */
+		}
+
+		.btn:last-child {
+			margin-right: 0;
+			background: #bbb;
+		}
+
+		.btn:hover {
+			background: #d12c2c;
+		}
+
+		.btn:last-child:hover {
+			background: #999;
+		}
+
+		@media (max-width: 700px) {
+
+			#jsTrolley,
+			.goods1 {
+				width: 98vw;
+				max-width: 98vw;
+			}
+
+			#jsTrolley th,
+			#jsTrolley td {
+				padding: 10px 4px;
+				font-size: 15px;
+			}
+
+			#jsTrolley img {
+				width: 60px;
+				height: 60px;
+			}
+
+			.btn,
+			.btn:last-child {
+				padding: 8px 18px;
+				font-size: 15px;
+				margin-right: 8px;
+			}
+		}
+
+		@keyframes fadeInDown {
+			0% {
+				opacity: 0;
+				transform: translateY(-30px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+
+		/* 建议添加到 css/shopping car.css 或 <style> 标签内 */
+		.select-item,
+		#select-all {
+			width: 22px;
+			height: 22px;
+			accent-color: #F33F3F;
+			/* 现代浏览器支持，设置勾选色 */
+			border-radius: 6px;
+			box-shadow: 0 2px 8px #ffe5e5;
+			cursor: pointer;
+			transition: box-shadow 0.2s, accent-color 0.2s;
+			vertical-align: middle;
+		}
+
+		.select-item:focus,
+		#select-all:focus {
+			outline: 2px solid #F33F3F;
+			box-shadow: 0 0 0 3px #ffe5e5;
+		}
+
+		.select-item:hover,
+		#select-all:hover {
+			box-shadow: 0 4px 16px #f33f3f55;
+			accent-color: #d12c2c;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- lead -->
+	<div id="lead">
+		<table>
+			<tr>
+				<td id="logo"><a href="index.html"><span style="color: #F33F3F;">SEVENTEEN
+							&nbsp;&nbsp;&nbsp;&nbsp;购物车</span></a></td>
+				<td><a href="index.html">主页</a></td>
+				<td><a href="product.html">新品|女士</a></td>
+				<td><a href="#">新品|男士</a></td>
+				<td><a href="#">新品|儿童</a></td>
+				<td><a href="#">新品|鞋包</a></td>
+				<td><a href="about us.html">品牌形象</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<table id="jsTrolley">
+		<thead>
+			<tr>
+				<th><input type="checkbox" id="select-all"></th>
+
+				<th>商品</th>
+				<th>名称</th>
+				<th>规格</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="pic">
+				<td><input type="checkbox" class="select-item" checked></td>
+
+				<td><img src="img/z4.jpg" alt=""></td>
+				<td>夏日清新T恤</td>
+				<td>白色 / L</td>
+				<td>￥199</td>
+				<td>2</td>
+				<td>￥398</td>
+				<td><a class="del" href="javascript:void(0);">删除</a></td>
+			</tr>
+			<tr class="pic">
+				<td><input type="checkbox" class="select-item" checked></td>
+
+				<td><img src="img/z2.jpg" alt=""></td>
+				<td>经典牛仔裤</td>
+				<td>深蓝 / 32码</td>
+				<td>￥299</td>
+				<td>1</td>
+				<td>￥299</td>
+				<td><a class="del" href="javascript:void(0);">删除</a></td>
+			</tr>
+			<tr class="pic">
+				<td><input type="checkbox" class="select-item" checked></td>
+
+				<td><img src="img/z3.jpg" alt=""></td>
+				<td>时尚运动鞋</td>
+				<td>黑色 / 42</td>
+				<td>￥369</td>
+				<td>1</td>
+				<td>￥369</td>
+				<td><a class="del" href="javascript:void(0);">删除</a></td>
+			</tr>
+			<tr class="pic">
+				<td><input type="checkbox" class="select-item" checked></td>
+
+				<td><img src="img/q1.png" alt=""></td>
+				<td>印花连衣裙</td>
+				<td>花色 / M</td>
+				<td>￥259</td>
+				<td>1</td>
+				<td>￥259</td>
+				<td><a class="del" href="javascript:void(0);">删除</a></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="5">总计</th>
+				<td colspan="2">￥1325 (5件商品)</td>
+			</tr>
+		</tfoot>
+	</table>
+	<div class="goods1">
+		<button class="btn" onclick="window.location.href='allpay.html'">确认购买</button>
+		<button id="clear" class="btn">全部清空</button>
+	</div>
+
+
+
+
+
+
+
+	<!-- 页脚 -->
+	<footer
+		style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+		<div style="max-width:1200px; margin:0 auto;">
+			<div style="margin-bottom:12px;">
+				<a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+				<a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+				<a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+				<a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+			</div>
+			<div style="margin-bottom:8px;">
+				© 2025 SEVENTEEN CLOTHING. 保留所有权利.
+			</div>
+			<div style="font-size:14px; color:#bbb;">
+				联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+			</div>
+		</div>
+	</footer>
+
+
+	<script>
+		// 选择所有商品行和删除按钮
+
+		var goods = document.querySelectorAll('.pic')
+		var del = document.querySelectorAll('.del')
+		var tfoot = document.querySelector('tfoot')
+		// 删除按钮逻辑（已被后面bindDeleteBtns替代，这里可忽略）
+		for (let i = 0; i < del.length; i++) {
+			del[i].addEventListener('click', e => {
+				var tr = e.target.parentNode.parentNode
+				var price = tr.children[1].innerText
+				var total = tfoot.children[0].children[1].innerText.split('(')[0]
+				tr.parentNode.removeChild(tr)
+				var num = document.querySelectorAll('.del').length
+				tfoot.innerHTML = `<tr><th>总计</th><td colspan="2">${(Number(total) - Number(price).toFixed(2))}(${num}件商品)</td></tr>`
+			})
+		}
+		// 清空按钮逻辑（移除表格并下移按钮）
+
+		var clear = document.querySelector('#clear')
+		var jsTrolley = document.querySelector('#jsTrolley')
+		clear.addEventListener('click', e => {
+			jsTrolley.parentNode.removeChild(jsTrolley)
+			var goods1 = document.querySelector('.goods1')
+			goods1.style.marginTop = 500 + 'px'
+		})
+
+
+
+
+		// 修改 renderCartFromStorage 函数，确保新加入的商品也有复选框
+		function renderCartFromStorage() {
+			var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+			if (!cart.length) return;
+			var tbody = document.querySelector('#jsTrolley tbody');
+			// 只渲染localStorage新增的商品（避免重复）
+			cart.forEach(function (item) {
+				// 检查页面上是否已存在该商品（以标题和规格为唯一标识）
+				var exists = Array.from(tbody.querySelectorAll('tr')).some(function (tr) {
+					return tr.children[2] && tr.children[2].innerText === item.title && tr.children[3].innerText === item.spec;
+				});
+				if (exists) return;
+				var tr = document.createElement('tr');
+				tr.className = 'pic';
+				tr.innerHTML = `
+            <td><input type="checkbox" class="select-item" checked></td>
+            <td><img src="${item.img}" alt=""></td>
+            <td>${item.title}</td>
+            <td>${item.spec}</td>
+            <td>￥${item.price}</td>
+            <td>${item.count}</td>
+            <td>￥${(item.price * item.count).toFixed(0)}</td>
+            <td><a class="del" href="javascript:void(0);">删除</a></td>
+        `;
+				tbody.appendChild(tr);
+			});
+			updateCartTotal();
+			bindDeleteBtns();
+			// 新增：为新加入的商品复选框绑定change事件
+			document.querySelectorAll('.select-item').forEach(cb => {
+				cb.onchange = function () {
+					updateCartTotal();
+					const all = document.querySelectorAll('.select-item');
+					const checked = document.querySelectorAll('.select-item:checked');
+					document.getElementById('select-all').checked = all.length === checked.length;
+				};
+			});
+		}
+
+
+
+		// 选择逻辑
+		document.getElementById('select-all').onclick = function () {
+			const checked = this.checked;
+			document.querySelectorAll('.select-item').forEach(cb => cb.checked = checked);
+			updateCartTotal();
+		};
+
+
+
+
+		// 更新总计时只统计选中的商品
+		function updateCartTotal() {
+			var tbody = document.querySelector('#jsTrolley tbody');
+			var trs = tbody.querySelectorAll('tr');
+			var total = 0, num = 0;
+			trs.forEach(function (tr) {
+				const cb = tr.querySelector('.select-item');
+				if (!cb || !cb.checked) return;
+				var price = Number(tr.children[6].innerText.replace('￥', ''));
+				var count = Number(tr.children[5].innerText);
+				total += price;
+				num += count;
+			});
+			var tfoot = document.querySelector('#jsTrolley tfoot');
+			tfoot.innerHTML = `<tr><th colspan="6">总计</th><td colspan="2">￥${total} (${num}件商品)</td></tr>`;
+
+			// 只同步选中商品的总价和数量
+			localStorage.setItem('cart_summary', JSON.stringify({ total: total, num: num }));
+		}
+		// 单个商品选择变化时更新总计
+		document.querySelector('#jsTrolley').addEventListener('change', function (e) {
+			if (e.target.classList.contains('select-item')) {
+				updateCartTotal();
+				// 全选状态同步
+				const all = document.querySelectorAll('.select-item');
+				const checked = document.querySelectorAll('.select-item:checked');
+				document.getElementById('select-all').checked = all.length === checked.length;
+			}
+		});
+
+		// 初始化时全选
+		document.querySelectorAll('.select-item').forEach(cb => cb.checked = true);
+		document.getElementById('select-all').checked = true;
+		updateCartTotal();
+
+
+
+
+
+
+
+
+		// 删除按钮事件绑定
+		function bindDeleteBtns() {
+			var delBtns = document.querySelectorAll('.del');
+			delBtns.forEach(function (btn) {
+				btn.onclick = function (e) {
+					var tr = btn.closest('tr');
+					var title = tr.children[1].innerText;
+					var spec = tr.children[2].innerText;
+					// 删除localStorage中的对应商品
+					var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+					cart = cart.filter(i => !(i.title === title && i.spec === spec));
+					localStorage.setItem('cart', JSON.stringify(cart));
+					tr.remove();
+					updateCartTotal();
+				};
+			});
+		}
+
+		// 清空按钮
+		document.getElementById('clear').onclick = function () {
+			localStorage.removeItem('cart');
+			var tbody = document.querySelector('#jsTrolley tbody');
+			tbody.innerHTML = '';
+			updateCartTotal();
+		};
+
+		renderCartFromStorage();
+	</script>
+
+
+
+</body>
+
+</html>

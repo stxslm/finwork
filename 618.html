@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>618年中大促 - SEVENTEEN CLOTHING</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f8f8fa;
+            font-family: 'PingFang SC', '微软雅黑', Arial, sans-serif;
+            color: #222;
+        }
+
+        .header-618 {
+            width: 100%;
+            background: linear-gradient(90deg, #ff4e50 0%, #f9d423 100%);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-618 .main-title {
+            text-align: center;
+            color: #fff;
+            font-size: 3.2em;
+            font-weight: 900;
+            letter-spacing: 6px;
+            padding: 54px 0 12px 0;
+            text-shadow: 0 4px 24px #ffb199, 0 2px 8px #fff;
+        }
+
+        .header-618 .sub-title {
+            text-align: center;
+            color: #fff;
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-bottom: 38px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px #fffbe6;
+        }
+
+        .header-618 .date-tag {
+            display: inline-block;
+            background: #fff;
+            color: #ff4e50;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 18px;
+            padding: 6px 22px;
+            margin: 0 auto 36px auto;
+            box-shadow: 0 2px 12px #ffb19944;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header-618 .banner-img {
+            display: block;
+            margin: 0 auto;
+            width: 340px;
+            max-width: 90vw;
+            border-radius: 18px;
+            box-shadow: 0 8px 36px #ffb19955;
+            border: 4px solid #fff;
+            margin-bottom: -60px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .activity-cards {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 90px auto 0 auto;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .activity-cards .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px #f3eaea;
+            padding: 32px 28px 24px 28px;
+            min-width: 220px;
+            max-width: 320px;
+            flex: 1 1 220px;
+            text-align: center;
+            border: 2px solid #ffe5e5;
+            transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
+            position: relative;
+        }
+
+        .activity-cards .card .icon {
+            font-size: 2.6em;
+            margin-bottom: 14px;
+            color: #ff4e50;
+        }
+
+        .activity-cards .card .title {
+            font-size: 1.25em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ff4e50;
+        }
+
+        .activity-cards .card .desc {
+            color: #666;
+            font-size: 1.08em;
+            margin-bottom: 6px;
+        }
+
+        .activity-cards .card .tag {
+            display: inline-block;
+            background: #ff4e50;
+            color: #fff;
+            font-size: 1em;
+            border-radius: 8px;
+            padding: 3px 16px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .activity-cards .card:hover {
+            box-shadow: 0 8px 32px #ffb19955;
+            transform: translateY(-8px) scale(1.04);
+            border: 2px solid #ff4e50;
+        }
+
+        .hot-products-section {
+            max-width: 1200px;
+            margin: 64px auto 0 auto;
+            padding: 0 12px;
+        }
+
+        .hot-products-title {
+            font-size: 2em;
+            color: #ff4e50;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 32px;
+            letter-spacing: 2px;
+        }
+
+        .hot-products-list {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hot-product {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f3eaea;
+            padding: 18px 18px 14px 18px;
+            text-align: center;
+            width: 210px;
+            border: 2px solid #ffe5e5;
+            transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
+            position: relative;
+        }
+
+        .hot-product:hover {
+            box-shadow: 0 8px 32px #ffb19955;
+            transform: translateY(-4px) scale(1.04);
+            border: 2px solid #ff4e50;
+        }
+
+        .hot-product img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 12px #fffbe6;
+            border: 1.5px solid #ffe5e5;
+        }
+
+        .hot-product .name {
+            font-size: 1.13em;
+            color: #232323;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .hot-product .price {
+            color: #ff4e50;
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hot-product .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff4e50, #f9d423);
+            color: #fff;
+            font-size: 1em;
+            font-weight: bold;
+            padding: 7px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 6px;
+            box-shadow: 0 2px 8px #f3eaea;
+            border: none;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .hot-product .btn:hover {
+            background: linear-gradient(90deg, #f9d423, #ff4e50);
+            box-shadow: 0 6px 18px #ffe5e5;
+        }
+
+        .tips-618 {
+            margin: 54px auto 0 auto;
+            max-width: 900px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f3eaea;
+            padding: 28px 38px;
+            color: #ff4e50;
+            font-size: 1.13em;
+            border: 2px solid #ffe5e5;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+
+            .activity-cards,
+            .hot-products-list {
+                gap: 14px;
+            }
+
+            .header-618 .main-title {
+                font-size: 2.1em;
+            }
+
+            .hot-products-title {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .activity-cards,
+            .hot-products-list {
+                flex-direction: column;
+            }
+
+            .header-618 .main-title {
+                font-size: 1.3em;
+                padding: 28px 0 8px 0;
+            }
+
+            .header-618 .banner-img {
+                width: 98vw;
+            }
+
+            .activity-cards .card,
+            .hot-product {
+                min-width: 0;
+                width: 98vw;
+                max-width: 98vw;
+            }
+
+            .hot-products-section {
+                padding: 0 2vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" style="
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        z-index: 99;
+        background: #fff;
+        color: #ff4e50;
+        font-weight: bold;
+        font-size: 1.08em;
+        border-radius: 22px;
+        padding: 8px 22px;
+        box-shadow: 0 2px 12px #ffb19944;
+        text-decoration: none;
+        border: 2px solid #ff4e50;
+        transition: background 0.2s, color 0.2s;
+    " onmouseover="this.style.background='#ff4e50';this.style.color='#fff';"
+        onmouseout="this.style.background='#fff';this.style.color='#ff4e50';">
+        ← 返回首页
+    </a>
+    <div class="header-618">
+        <div class="main-title">618年中大促</div>
+        <div class="sub-title">全场低至7折，爆款限时抢购，会员专享大礼包！</div>
+        <div class="date-tag">活动时间：6月10日-6月20日</div>
+        <img class="banner-img" src="img/618大促.jpg" alt="618主视觉">
+    </div>
+
+    <div class="activity-cards">
+        <div class="card">
+            <div class="icon">🎁</div>
+            <div class="title">新会员专享</div>
+            <div class="desc">注册即送100元大礼包</div>
+            <div class="tag">限时领取</div>
+        </div>
+        <div class="card">
+            <div class="icon">🔥</div>
+            <div class="title">爆款直降</div>
+            <div class="desc">精选商品7折起</div>
+            <div class="tag">限量抢购</div>
+        </div>
+        <div class="card">
+            <div class="icon">🚚</div>
+            <div class="title">全场包邮</div>
+            <div class="desc">满199元免运费</div>
+            <div class="tag">全国配送</div>
+        </div>
+        <!-- <div class="card">
+            <div class="icon">💎</div>
+            <div class="title">会员积分翻倍</div>
+            <div class="desc">购物即享双倍积分</div>
+            <div class="tag">会员专属</div>
+        </div> -->
+    </div>
+
+    <div class="hot-products-section">
+        <div class="hot-products-title">热卖推荐</div>
+        <div class="hot-products-list">
+            <div class="hot-product">
+                <img src="img/p2.png" alt="夏日清新T恤">
+                <div class="name">夏日清新T恤</div>
+                <div class="price">¥129 <span style="color:#b26d00;font-size:0.9em;">（7折）</span></div>
+                <a href="product.html" class="btn">立即抢购</a>
+            </div>
+            <div class="hot-product">
+                <img src="img/p4.png" alt="潮流牛仔裤">
+                <div class="name">潮流牛仔裤</div>
+                <div class="price">¥199 <span style="color:#b26d00;font-size:0.9em;">（7.5折）</span></div>
+                <a href="product.html" class="btn">立即抢购</a>
+            </div>
+            <div class="hot-product">
+                <img src="img/p5.png" alt="轻盈运动鞋">
+                <div class="name">轻盈运动鞋</div>
+                <div class="price">¥259 <span style="color:#b26d00;font-size:0.9em;">（8折）</span></div>
+                <a href="product.html" class="btn">立即抢购</a>
+            </div>
+            <div class="hot-product">
+                <img src="img/p7.png" alt="简约连衣裙">
+                <div class="name">简约连衣裙</div>
+                <div class="price">¥189 <span style="color:#b26d00;font-size:0.9em;">（7折）</span></div>
+                <a href="product.html" class="btn">立即抢购</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="tips-618">
+        温馨提示：数量有限，先到先得！如有疑问请联系客服。
+    </div>
+</body>
+
+</html>

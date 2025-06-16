@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>会员中心 - SEVENTEEN CLOTHING</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+            font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .vip-header {
+            background: #232323;
+            color: #fff;
+            padding: 48px 0 32px 0;
+            text-align: center;
+        }
+
+        .vip-header h1 {
+            font-size: 2.6em;
+            color: #F33F3F;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .vip-header p {
+            font-size: 1.2em;
+            color: #fff;
+            margin: 0;
+        }
+
+        .vip-container {
+            max-width: 900px;
+            margin: 48px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #f3eaea;
+            padding: 48px 38px 38px 38px;
+        }
+
+        .vip-levels {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-bottom: 38px;
+            flex-wrap: wrap;
+        }
+
+        .vip-card {
+            flex: 1 1 220px;
+            background: linear-gradient(120deg, #fffbe6 60%, #ffe5e5 100%);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #f3eaea;
+            padding: 28px 18px 22px 18px;
+            text-align: center;
+            margin: 0 8px;
+            min-width: 220px;
+            max-width: 260px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .vip-card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 8px 32px #f3eaea;
+        }
+
+        .vip-level {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #F33F3F;
+            margin-bottom: 10px;
+        }
+
+        .vip-icon {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .vip-desc {
+            color: #888;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .vip-benefits {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 200px;
+            color: #232323;
+            font-size: 0.98em;
+        }
+
+        .vip-benefits li {
+            margin-bottom: 6px;
+        }
+
+        .vip-progress-section {
+            margin: 38px 0 0 0;
+            background: #fffbe6;
+            border-radius: 12px;
+            padding: 24px 18px;
+            text-align: center;
+        }
+
+        .vip-progress-title {
+            font-size: 1.2em;
+            color: #f56600;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .vip-progress-bar-bg {
+            background: #ffe5e5;
+            border-radius: 8px;
+            height: 18px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .vip-progress-bar {
+            background: linear-gradient(90deg, #F33F3F, #f56600);
+            width: 64%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .vip-progress-info {
+            font-size: 15px;
+            color: #f56600;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 10px 32px;
+            background: #f56600;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background: #d35400;
+        }
+
+        @media (max-width: 900px) {
+            .vip-container {
+                padding: 18px 2vw 18px 2vw;
+            }
+
+            .vip-levels {
+                flex-direction: column;
+                gap: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vip-header">
+        <h1>会员中心</h1>
+        <p>尊享专属权益，开启品质生活</p>
+    </div>
+    <div class="vip-container">
+        <div class="vip-levels">
+            <div class="vip-card">
+                <span class="vip-icon">🥉</span>
+                <div class="vip-level">普通会员</div>
+                <div class="vip-desc">注册即享</div>
+                <ul class="vip-benefits">
+                    <li>基础购物积分</li>
+                    <li>专属客服支持</li>
+                </ul>
+            </div>
+            <div class="vip-card">
+                <span class="vip-icon">🥈</span>
+                <div class="vip-level">黄金会员</div>
+                <div class="vip-desc">成长值满1000</div>
+                <ul class="vip-benefits">
+                    <li>购物积分加倍</li>
+                    <li>专属生日礼券</li>
+                    <li>优先参与新品活动</li>
+                </ul>
+            </div>
+            <div class="vip-card">
+                <span class="vip-icon">🥇</span>
+                <div class="vip-level">钻石会员</div>
+                <div class="vip-desc">成长值满3000</div>
+                <ul class="vip-benefits">
+                    <li>专属钻石礼包</li>
+                    <li>全年包邮特权</li>
+                    <li>专属客服通道</li>
+                    <li>线下活动优先权</li>
+                </ul>
+            </div>
+        </div>
+        <div class="vip-progress-section">
+            <div class="vip-progress-title">我的成长进度</div>
+            <div class="vip-progress-bar-bg">
+                <div class="vip-progress-bar" style="width: 64%;"></div>
+            </div>
+            <div class="vip-progress-info">当前成长值：1280 / 3000（距离钻石会员还差1720）</div>
+        </div>
+        <a href="personal.html" class="back-btn">返回个人中心</a>
+    </div>
+</body>
+
+</html>

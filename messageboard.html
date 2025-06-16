@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<link rel="stylesheet" href="css/messageboard.css">
+	<link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+	<style>
+		body {
+			background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+			font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+			margin: 0;
+			min-height: 100vh;
+		}
+
+		#lead {
+			background: #232323;
+			box-shadow: 0 2px 12px #eee;
+			border-bottom: 2px solid #F33F3F;
+			margin-bottom: 40px;
+			height: 68px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+		}
+
+		#lead table {
+			margin: 0 auto;
+			background: none;
+		}
+
+		#lead td a,
+		#lead #logo a {
+			display: inline-block;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 12px 18px;
+			border-radius: 20px;
+			text-decoration: none;
+			transition: background 0.2s, color 0.2s;
+			margin: 0 4px;
+		}
+
+		#lead td a:hover,
+		#lead #logo a:hover {
+			background: #F33F3F;
+			color: #fff;
+		}
+
+		#lead #logo a {
+			color: #F33F3F;
+			font-size: 28px;
+			padding: 0 18px;
+			background: none;
+			letter-spacing: 2px;
+		}
+
+		.message-board-container {
+			max-width: 600px;
+			margin: 40px auto;
+			background: #fff;
+			border-radius: 16px;
+			box-shadow: 0 4px 24px #f3eaea;
+			padding: 36px 36px 28px 36px;
+			animation: fadeInDown 0.8s;
+		}
+
+		.message-board-title {
+			text-align: center;
+			font-size: 26px;
+			color: #F33F3F;
+			margin-bottom: 28px;
+			letter-spacing: 2px;
+			font-weight: bold;
+		}
+
+		form.message-form {
+			display: flex;
+			flex-direction: column;
+			gap: 22px;
+		}
+
+		.form-row {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+		}
+
+		.form-label {
+			width: 110px;
+			font-size: 16px;
+			color: #333;
+			text-align: right;
+			flex-shrink: 0;
+		}
+
+		.form-input,
+		.form-textarea {
+			flex: 1;
+			font-size: 16px;
+			padding: 8px 12px;
+			border: 1px solid #ddd;
+			border-radius: 6px;
+			background: #fff7f0;
+			resize: none;
+			box-sizing: border-box;
+		}
+
+		.form-textarea {
+			height: 100px;
+		}
+
+		.form-required {
+			color: #F33F3F;
+			margin-left: 4px;
+			font-size: 16px;
+		}
+
+		.form-actions {
+			text-align: center;
+			margin-top: 10px;
+		}
+
+		.form-actions input[type="submit"],
+		.form-actions input[type="reset"] {
+			background: #F33F3F;
+			color: #fff;
+			border: none;
+			border-radius: 20px;
+			padding: 8px 36px;
+			font-size: 16px;
+			cursor: pointer;
+			margin: 0 16px;
+			transition: background 0.2s;
+		}
+
+		.form-actions input[type="reset"] {
+			background: #bbb;
+		}
+
+		.form-actions input[type="submit"]:hover {
+			background: #d12c2c;
+		}
+
+		.form-actions input[type="reset"]:hover {
+			background: #999;
+		}
+
+		@media (max-width: 700px) {
+			.message-board-container {
+				max-width: 98vw;
+				padding: 16px 2vw 12px 2vw;
+			}
+
+			.form-row {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 6px;
+			}
+
+			.form-label {
+				width: auto;
+				text-align: left;
+			}
+		}
+
+		@keyframes fadeInDown {
+			0% {
+				opacity: 0;
+				transform: translateY(-30px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- lead -->
+	<div id="lead">
+		<table>
+			<tr>
+				<td id="logo"><a href="index.html">SEVENTEEN</a></td>
+				<td><a href="index.html">主页</a></td>
+				<td><a href="product.html">新品|女士</a></td>
+				<td><a href="#">新品|男士</a></td>
+				<td><a href="#">新品|儿童</a></td>
+				<td><a href="#">新品|鞋包</a></td>
+				<td><a href="about us.html">品牌形象</a></td>
+			</tr>
+		</table>
+	</div>
+	<div class="message-board-container">
+		<div class="message-board-title">Message Board</div>
+		<form class="message-form">
+			<div class="form-row">
+				<label class="form-label">您的姓名:<span class="form-required">*</span></label>
+				<input class="form-input" type="text" required>
+			</div>
+			<div class="form-row">
+				<label class="form-label">您的邮箱:<span class="form-required">*</span></label>
+				<input class="form-input" type="email" required>
+			</div>
+			<div class="form-row">
+				<label class="form-label">其他联系方式:<span class="form-required">*</span></label>
+				<input class="form-input" type="text" placeholder="QQ/MSN/电话号码" required>
+			</div>
+			<div class="form-row">
+				<label class="form-label">留言内容:<br><span style="font-size:12px;color:#888;">(200字以内)</span><span
+						class="form-required">*</span></label>
+				<textarea class="form-textarea" maxlength="200" required></textarea>
+			</div>
+			<div class="form-actions">
+				<input type="submit" value="提交留言" name="c">
+				<input type="reset" value="重新填写" name="d">
+			</div>
+		</form>
+	</div>
+
+
+
+	<!-- 页脚 -->
+	<footer
+		style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+		<div style="max-width:1200px; margin:0 auto;">
+			<div style="margin-bottom:12px;">
+				<a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+				<a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+				<a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+				<a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+			</div>
+			<div style="margin-bottom:8px;">
+				© 2025 SEVENTEEN CLOTHING. 保留所有权利.
+			</div>
+			<div style="font-size:14px; color:#bbb;">
+				联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+			</div>
+		</div>
+	</footer>
+
+
+
+</body>
+
+</html>

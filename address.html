@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收货地址管理 - SEVENTEEN CLOTHING</title>
+    <link rel="stylesheet" type="text/css" href="CSS/personal.css">
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+            font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        #content {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            gap: 36px;
+        }
+
+        .sidebar {
+            width: 220px;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #f3eaea;
+            padding: 24px 0;
+        }
+
+        .sidebar-card h2 {
+            text-align: center;
+            color: #F33F3F;
+            margin-bottom: 18px;
+        }
+
+        .sidebar-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-card li {
+            margin: 0;
+        }
+
+        .sidebar-card a {
+            display: block;
+            padding: 14px 32px;
+            color: #232323;
+            text-decoration: none;
+            font-size: 18px;
+            border-left: 4px solid transparent;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .sidebar-card li.active a,
+        .sidebar-card a:hover {
+            background: #fff3f3;
+            color: #F33F3F;
+            border-left: 4px solid #F33F3F;
+        }
+
+        .main {
+            flex: 1;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #f3eaea;
+            padding: 32px 36px;
+            min-height: 600px;
+        }
+
+        .main h2 {
+            color: #F33F3F;
+            margin-bottom: 24px;
+        }
+
+        .address-list {
+            margin-bottom: 32px;
+        }
+
+        .address-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff7f0;
+            border-radius: 10px;
+            padding: 18px 24px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px #f3eaea;
+        }
+
+        .address-info {
+            flex: 1;
+        }
+
+        .address-actions button {
+            background: #F33F3F;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 18px;
+            font-size: 15px;
+            margin-left: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .address-actions button:last-child {
+            background: #bbb;
+        }
+
+        .address-actions button:hover {
+            background: #d12c2c;
+        }
+
+        .address-actions button:last-child:hover {
+            background: #999;
+        }
+
+        .add-address-btn {
+            background: #F33F3F;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 18px;
+            transition: background 0.2s;
+        }
+
+        .add-address-btn:hover {
+            background: #d12c2c;
+        }
+
+        .address-form-modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .address-form-modal.active {
+            display: flex;
+        }
+
+        .address-form {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px 36px;
+            min-width: 320px;
+            box-shadow: 0 4px 24px #f3eaea;
+        }
+
+        .address-form h3 {
+            margin-top: 0;
+            color: #F33F3F;
+            margin-bottom: 18px;
+        }
+
+        .address-form label {
+            display: block;
+            margin-bottom: 6px;
+            color: #232323;
+        }
+
+        .address-form input {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .address-form .form-actions {
+            text-align: right;
+        }
+
+        .address-form .form-actions button {
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            margin-left: 12px;
+            cursor: pointer;
+        }
+
+        .address-form .form-actions .save-btn {
+            background: #F33F3F;
+            color: #fff;
+        }
+
+        .address-form .form-actions .cancel-btn {
+            background: #bbb;
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            #content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .main {
+                padding: 18px 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 主体内容 -->
+    <div id="content">
+        <!-- 侧边导航 -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <h2>个人中心</h2>
+                <ul>
+                    <li><a href="personal.html"><span class="icon">👤</span>账户信息</a></li>
+                    <li><a href="orders.html"><span class="icon">🧾</span>我的订单</a></li>
+                    <li class="active"><a href="address.html"><span class="icon">🏠</span>收货地址</a></li>
+                    <li><a href="favorites.html"><span class="icon">❤️</span>我的收藏</a></li>
+                    <li><a href="settings.html"><span class="icon">⚙️</span>账户设置</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 主内容区 -->
+        <div class="main">
+            <h2>收货地址管理</h2>
+            <button class="add-address-btn" id="addAddressBtn">+ 添加新地址</button>
+            <div class="address-list" id="addressList">
+                <!-- 地址项将由JS动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 地址表单弹窗 -->
+    <div class="address-form-modal" id="addressModal">
+        <form class="address-form" id="addressForm">
+            <h3 id="modalTitle">添加新地址</h3>
+            <label for="receiver">收件人姓名</label>
+            <input type="text" id="receiver" name="receiver" required>
+            <label for="phone">联系电话</label>
+            <input type="tel" id="phone" name="phone" required pattern="^1\d{10}$" placeholder="11位手机号">
+            <label for="address">详细地址</label>
+            <input type="text" id="address" name="address" required>
+            <div class="form-actions">
+                <button type="button" class="cancel-btn" id="cancelBtn">取消</button>
+                <button type="submit" class="save-btn">保存</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- 页脚 -->
+    <footer
+        style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+                <a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+                <a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+                <a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+            </div>
+            <div style="margin-bottom:8px;">
+                © 2025 SEVENTEEN CLOTHING. 保留所有权利.
+            </div>
+            <div style="font-size:14px; color:#bbb;">
+                联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+            </div>
+        </div>
+    </footer>
+    <script>
+        // 地址数据模拟（可替换为后端接口）
+        let addresses = [
+            { id: 1, receiver: "张三", phone: "13800138000", address: "广东省广州市天河区XX路1号" },
+            { id: 2, receiver: "李四", phone: "13900139000", address: "广东省深圳市南山区YY街道2号" }
+        ];
+        let editingId = null;
+
+        const addressList = document.getElementById('addressList');
+        const addressModal = document.getElementById('addressModal');
+        const addressForm = document.getElementById('addressForm');
+        const addAddressBtn = document.getElementById('addAddressBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const receiverInput = document.getElementById('receiver');
+        const phoneInput = document.getElementById('phone');
+        const addressInput = document.getElementById('address');
+
+        // 渲染地址列表
+        function renderAddresses() {
+            addressList.innerHTML = '';
+            if (addresses.length === 0) {
+                addressList.innerHTML = '<div style="color:#F33F3F;text-align:center;margin:32px 0;">暂无收货地址，请添加。</div>';
+                return;
+            }
+            addresses.forEach(addr => {
+                const div = document.createElement('div');
+                div.className = 'address-item';
+                div.innerHTML = `
+                    <div class="address-info">
+                        <div><strong>${addr.receiver}</strong> &nbsp; ${addr.phone}</div>
+                        <div style="color:#888;margin-top:4px;">${addr.address}</div>
+                    </div>
+                    <div class="address-actions">
+                        <button onclick="editAddress(${addr.id})">修改</button>
+                        <button onclick="deleteAddress(${addr.id})">删除</button>
+                    </div>
+                `;
+                addressList.appendChild(div);
+            });
+        }
+
+        // 打开添加地址弹窗
+        addAddressBtn.onclick = function () {
+            editingId = null;
+            modalTitle.innerText = "添加新地址";
+            receiverInput.value = '';
+            phoneInput.value = '';
+            addressInput.value = '';
+            addressModal.classList.add('active');
+        };
+
+        // 取消按钮
+        cancelBtn.onclick = function () {
+            addressModal.classList.remove('active');
+        };
+
+        // 保存地址
+        addressForm.onsubmit = function (e) {
+            e.preventDefault();
+            const receiver = receiverInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const address = addressInput.value.trim();
+            if (!receiver || !phone || !address) return;
+            if (editingId) {
+                // 修改
+                addresses = addresses.map(addr =>
+                    addr.id === editingId ? { id: editingId, receiver, phone, address } : addr
+                );
+            } else {
+                // 新增
+                const newId = addresses.length ? Math.max(...addresses.map(a => a.id)) + 1 : 1;
+                addresses.push({ id: newId, receiver, phone, address });
+            }
+            addressModal.classList.remove('active');
+            renderAddresses();
+        };
+
+        // 编辑地址
+        window.editAddress = function (id) {
+            const addr = addresses.find(a => a.id === id);
+            if (!addr) return;
+            editingId = id;
+            modalTitle.innerText = "修改地址";
+            receiverInput.value = addr.receiver;
+            phoneInput.value = addr.phone;
+            addressInput.value = addr.address;
+            addressModal.classList.add('active');
+        };
+
+        // 删除地址
+        window.deleteAddress = function (id) {
+            if (confirm('确定要删除该地址吗？')) {
+                addresses = addresses.filter(a => a.id !== id);
+                renderAddresses();
+            }
+        };
+
+        // 初始化
+        renderAddresses();
+    </script>
+</body>
+
+</html>

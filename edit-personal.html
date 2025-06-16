@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>编辑个人信息 - SEVENTEEN CLOTHING</title>
+    <link rel="stylesheet" type="text/css" href="CSS/personal.css">
+    <link rel="shortcut icon" href="sw_eps.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #fbeee6 0%, #ffe5e5 100%);
+
+        }
+
+        /* 信息表加宽，高度变窄，信息项两列排版 */
+        .edit-form {
+            max-width: 700px;
+            min-width: 340px;
+            margin: 40px auto;
+            background: #fff7f0;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #f3eaea;
+            padding: 30px 40px;
+            animation: fadeInDown 0.8s;
+        }
+
+        .edit-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .edit-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .edit-form .form-group {
+            flex: 1 1 45%;
+            min-width: 220px;
+            margin-bottom: 0;
+        }
+
+        .edit-form input,
+        .edit-form select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .edit-form .btn-group {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .edit-form button {
+            background: #F33F3F;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .edit-form button:hover {
+            background: #d12c2c;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            flex: 1 1 0;
+            min-width: 220px;
+        }
+
+        @media (max-width: 800px) {
+            .edit-form {
+                max-width: 98vw;
+                padding: 18px 4vw;
+            }
+
+            .edit-form form {
+                gap: 16px 0;
+            }
+
+            .edit-form .form-group {
+                flex: 1 1 100%;
+            }
+
+
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+                margin-bottom: 0;
+            }
+
+            .form-group {
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="edit-form">
+        <h2>编辑个人信息</h2>
+        <form id="editForm">
+            <label>用户名</label>
+            <input type="text" value="23215220122+单小龙" disabled>
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" value="stxslm@outlook.com" required>
+            <label for="phone">手机号码</label>
+            <input type="tel" id="phone" name="phone" value="18024199799" required pattern="^1\d{10}$">
+            <label for="gender">性别</label>
+            <select id="gender" name="gender" required>
+                <option value="">请选择</option>
+                <option value="male">男</option>
+                <option value="female">女</option>
+                <option value="other">其他</option>
+            </select>
+            <label for="birthday">生日</label>
+            <input type="date" id="birthday" name="birthday">
+            <label for="address">收货地址</label>
+            <input type="text" id="address" name="address" placeholder="请输入收货地址">
+            <div class="btn-group">
+                <button type="submit">保存</button>
+                <button type="button" onclick="window.location.href='personal.html'">取消</button>
+            </div>
+        </form>
+    </div> -->
+
+    <!-- 页面主标题 -->
+    <h1
+        style="text-align:center; margin-top:40px; font-size:2.2em; color:#F33F3F; letter-spacing:2px; font-weight:bold;">
+        个人信息编辑
+    </h1>
+
+    <div class="edit-form">
+        <h2>编辑个人信息</h2>
+        <form id="editForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" value="23215220122+单小龙" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" name="email" value="stxslm@outlook.com" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">手机号码</label>
+                    <input type="tel" id="phone" name="phone" value="18024199799" required pattern="^1\d{10}$">
+                </div>
+                <div class="form-group">
+                    <label for="gender">性别</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">请选择</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                        <option value="other">沃尔玛购物袋</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="birthday">生日</label>
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+                <div class="form-group">
+                    <label for="address">收货地址</label>
+                    <input type="text" id="address" name="address" placeholder="请输入收货地址">
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="submit">保存</button>
+                <button type="button" onclick="window.location.href='personal.html'">取消</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script>
+        document.getElementById('editForm').onsubmit = function (e) {
+            e.preventDefault();
+            // 实际项目可用AJAX提交，这里仅演示
+            alert('保存成功！(演示页面，未真正保存)');
+            window.location.href = 'personal.html';
+        }
+    </script>
+
+
+
+
+
+    <!-- 页脚 -->
+    <footer
+        style="background:#232323; color:#fff; padding:36px 0 24px 0; text-align:center; border-top:2px solid #F33F3F; margin-top:60px; font-size:16px; letter-spacing:1px;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <a href="home.html" style="color:#fff; margin:0 18px; text-decoration:none;">主页</a>|
+                <a href="product.html" style="color:#fff; margin:0 18px; text-decoration:none;">产品</a>|
+                <a href="about us.html" style="color:#fff; margin:0 18px; text-decoration:none;">品牌形象</a>|
+                <a href="messageboard.html" style="color:#fff; margin:0 18px; text-decoration:none;">联系我们</a>
+            </div>
+            <div style="margin-bottom:8px;">
+                © 2025 SEVENTEEN CLOTHING. 保留所有权利.
+            </div>
+            <div style="font-size:14px; color:#bbb;">
+                联系邮箱：service@seventeen.com &nbsp;|&nbsp; 粤ICP备xxxxxxx号
+            </div>
+        </div>
+    </footer>
+
+
+
+
+</body>
+
+</html>
